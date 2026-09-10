@@ -1,0 +1,469 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap');
+
+:root {
+  --sv-devanagari-sans: "Noto Sans Devanagari", "Noto Sans", sans-serif;
+  --sv-devanagari-serif: "Noto Serif Devanagari", "Noto Serif", serif;
+}
+
+.md-typeset,
+.md-nav,
+.md-header,
+.md-tabs {
+  font-family: var(--sv-devanagari-sans);
+}
+
+.md-typeset .shloka,
+.md-typeset .gloss,
+.md-typeset .vada {
+  font-family: var(--sv-devanagari-serif);
+}
+
+/* --- Uniform vertical rhythm, site-wide -----------------------------
+   Every block-level content type this site renders — shloka (any
+   data-type), gloss (any data-type), vada, dialog-block — has ZERO
+   vertical margin, deliberately, all the same way .shloka does. With
+   margin:0 everywhere, the only thing producing vertical space between
+   two adjacent blocks is ordinary line-height leading — the exact same
+   rhythm as the gap between two wrapped lines within a single block.
+   The effect: the gap between a dialog-block and the shloka after it,
+   between that shloka and a notes div, between two notes in a row,
+   between two paragraphs within one vritti — all of it reads as one
+   continuous, evenly-spaced flow, with no extra "block boundary" gap
+   anywhere. Distinguishing one type of content from another is left
+   entirely to font/weight/style/color/indentation (each type's own
+   rule below), never to spacing.
+   The ONE deliberate exception is .shloka[highlight="true"] — a
+   bordered/padded callout box, which needs real breathing room around
+   it precisely because it's meant to visually interrupt the normal
+   flow, not blend into it. See that rule further down.
+   Every div here is rendered with markdown="1" (all of them), which
+   wraps its text content in a <p> — even a single line with no blank
+   lines. That inner <p> carries its own margin independently of the
+   outer div's margin (the browser's UA default is ~1em top+bottom) —
+   zeroing the div's own margin isn't enough by itself unless the inner
+   <p> is zeroed too. Every rule below does both. */
+/* white-space is deliberately NOT pre-line: that CSS value treats a
+   trailing newline in the source (which our shloka content almost
+   always has — it's written on its own line before the closing </div>)
+   as a real, rendered blank line, which is exactly what was causing the
+   "still-huge shloka gap" bug — a 2-line shloka's div would render at
+   DOUBLE its <p>'s actual text height, entirely independent of margin/
+   padding (both already 0). Plain "normal" collapses all source
+   whitespace, including the pada line breaks within the verse itself —
+   those are put back explicitly, as real <br /> tags, by
+   generate_indices.py's extract_shlokas() when maintain_shloka_linebreak
+   is on for this text (site_config.yaml, overridable per-book in that
+   text's meta.yaml — see gloss_types.yaml's sibling doc for the general
+   site_config.yaml/meta.yaml override pattern). */
+.md-typeset .shloka {
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.7;
+  white-space: normal;
+}
+
+.md-typeset .shloka p {
+  margin: 0;
+}
+
+/* karika (शास्त्र root verses, e.g. काव्यप्रकाश/ध्वन्यालोक/साहित्यदर्पण) —
+   slightly more breathing room since these are usually followed
+   immediately by their own वृत्ति/commentary. */
+.md-typeset .shloka[data-type="karika"] {
+  line-height: 1.8;
+}
+
+/* nataka (a verse quoted within kavya-play dialogue, previously
+   .shloka-play) — no box, nudged right so it visually separates from the
+   speaker's name/dash without trying to align to it exactly (that varies
+   with name length). */
+.md-typeset .shloka[data-type="nataka"] {
+  display: block;
+  margin: 0 0 0 1.5rem;
+  line-height: 1.9;
+  font-weight: normal; /* base .shloka rule below is bold; nataka should read almost inline, not bold */
+}
+
+/* dialog (plain spoken prose in a kavya-play, when tagged as a shloka
+   block rather than left as ordinary paragraph text) — matches
+   .dialog-block's spacing, not bold. */
+.md-typeset .shloka[data-type="dialog"] {
+  font-weight: normal;
+  line-height: 1.9;
+}
+
+/* --- highlight="true" — an optional, independent flag any shloka can
+   carry regardless of data-type, for marking a particularly important
+   verse. Warm gold/amber tint (deliberately not red, which reads as an
+   error/warning in this theme). --------------------------------------- */
+.md-typeset .shloka[highlight="true"] {
+  background: rgba(255, 179, 0, 0.14);
+  border-left: 4px solid #ffab00;
+  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  margin: 0.5rem 0; /* a bordered/padded box reads better with a little
+                        breathing room, unlike the zero-margin default —
+                        this is a deliberately distinct visual callout,
+                        not part of the normal shloka-to-shloka flow */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .shloka[highlight="true"] {
+  background: rgba(255, 179, 0, 0.1);
+}
+
+/* --- vada: claim / refute (dialectical exposition) — its own class, not
+   folded into .gloss, only because the underlying content is written as
+   <div class="vada" data-type="claim/refute">, not class="gloss". No
+   visual properties of its own at all — its look comes entirely from
+   whichever .sv-style-* class its css_style: (gloss_types.yaml) resolves
+   to, exactly like .gloss below; this rule only carries what every vada
+   div needs regardless of style (the uniform-vertical-rhythm <p> fix,
+   and the "<u>label</u> – " prefix look, which the Python side generates
+   the same way for .gloss too). --------------------------------------- */
+/* Material's own list rules (.md-typeset ul/ol) carry a real
+   margin-top/margin-bottom (1em, and 0.5em again for a nested list) —
+   the exact same class of bug as the <p> margin issue above, just for
+   <ul>/<ol> instead of <p>. Any of our uniform-rhythm containers whose
+   content happens to include a Markdown list (e.g. a multi-point note)
+   needs this reset too, or that one block breaks the flat, even flow
+   everywhere else on the page. Only top/bottom is touched — the
+   existing left indent (bullet position) is Material's and stays. */
+.md-typeset .shloka ul, .md-typeset .shloka ol,
+.md-typeset .gloss li, .md-typeset .gloss li,
+.md-typeset .vada ul, .md-typeset .vada ol,
+.md-typeset .dialog-block ul, .md-typeset .dialog-block ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.md-typeset .vada p {
+  margin: 0; /* see the "Uniform vertical rhythm" note above .shloka */
+}
+
+.md-typeset .vada u {
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.md-typeset .vada[data-type="claim"] {
+  background: rgba(255, 179, 0, 0.14);
+  border-left: 4px solid #ffab00;
+  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  margin: 0.5rem 0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .vada[data-type="claim"] {
+  background: rgba(255, 179, 0, 0.1);
+}
+
+/* --- kavya prose / play ------------------------------------------------ */
+.md-typeset .dialog-block {
+  margin: 0; /* see the "Uniform vertical rhythm" note above .shloka */
+  line-height: 1.9;
+}
+
+.md-typeset .dialog-block p {
+  margin: 0; /* see the "Uniform vertical rhythm" note above .shloka */
+}
+
+.md-typeset .action {
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+}
+
+/* --- gloss: the single class for every commentary/annotation-type
+   block (anvaya, padartha, vyutpatti, tika, alankara, bhavartha,
+   vyakarana, kosha, udaharana, vritti, notes — see gloss_types.yaml for
+   which data-type= values are recognized). Like .vada above, this rule
+   carries NO visual properties of its own — indent, italic, color,
+   font-size all come from whichever .sv-style-* class below applies
+   (see that data-type's css_style: in gloss_types.yaml). Only what every
+   gloss div needs regardless of which style it ends up with. ---------- */
+.md-typeset .gloss p {
+  margin: 0; /* see the "Uniform vertical rhythm" note above .shloka. Base rule, not per-data-type: EVERY gloss data-type gets this same markdown="1"-wrapped <p>. */
+}
+
+/* --- .sv-style-* — the fixed, small set of visual treatments named in
+   gloss_types.yaml's supported_css_styles:. This is the ONLY place any
+   of these four names appears in the whole system — generate_indices.py
+   never hardcodes what "basic_gloss" or "flowing_text" mean, it only
+   validates a css_style: value is one of these names and passes it
+   through as a class. Renaming, retuning, or adding a treatment here
+   never requires touching the Python side at all — only a matching
+   supported_css_styles: entry if it's a genuinely new name. Applies
+   equally to a class="gloss" or class="vada" div — deliberately keyed
+   on the style class alone, not `.gloss.sv-style-...`/`.vada.sv-style-...`,
+   so it's truly one definition regardless of which div class carries it. */
+.sv-style-basic_gloss {
+  margin: 0 0 0 1rem;
+  line-height: 1.7;
+  color: var(--md-default-fg-color--light);
+}
+
+.sv-style-standout_italic {
+  margin: 0 0 0 1rem;
+  line-height: 1.7;
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+}
+
+.sv-style-flowing_text {
+  margin: 0;
+  line-height: 1.8;
+  color: inherit;
+}
+
+.sv-style-fine_print {
+  margin: 0 0 0 2.5rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* --- notes and every hidden_by_default:true gloss data-type above are
+   hidden by default and only shown once the toggle button is clicked.
+   .shloka is deliberately never part of this — it should always stay
+   visible.
+
+   Two independent states, each its own class (set at build time by
+   generate_indices.py from gloss_types.yaml's hideable/hidden_by_default
+   — see that file for the full convention):
+     .sv-toggleable      - this div is a member of the global Show/Hide
+                            group at all (drives whether the button
+                            appears, and whether clicking it affects this
+                            div — completely independent of whether it
+                            starts hidden or visible).
+     .sv-hidden-default   - this div STARTS hidden on page load (purely
+                            initial state; never appears without
+                            .sv-toggleable alongside it).
+
+   notes-toggle.js toggles <body> between two classes once clicked —
+   .sv-force-show forces EVERY .sv-toggleable div visible (even the
+   ones that don't have .sv-hidden-default, i.e. that started visible);
+   .sv-force-hide forces EVERY .sv-toggleable div hidden (even the ones
+   that started visible) — the button is a genuine show-all/hide-all for
+   the whole toggle group, not just a "reveal the hidden ones" switch.
+   Neither class is present until the button is clicked once — before
+   that, each div just shows/hides per its own .sv-hidden-default. ------ */
+.md-typeset .sv-toggleable.sv-hidden-default {
+  display: none;
+}
+
+body.sv-force-show .md-typeset .sv-toggleable {
+  display: block;
+}
+
+body.sv-force-hide .md-typeset .sv-toggleable {
+  display: none;
+}
+
+/* --- floating notes toggle button --------------------------------------- */
+#sv-notes-toggle {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 10;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--sv-devanagari-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+#sv-notes-toggle:hover {
+  filter: brightness(1.08);
+}
+
+/* --- shloka table on kavya chapter pages -------------------------------- */
+.md-typeset table {
+  font-family: var(--sv-devanagari-sans);
+}
+
+/* alternating row colors on every table (glossary tables, shloka tables) */
+.md-typeset table:not([class]) tr:nth-child(even),
+.md-typeset table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:nth-child(even),
+[data-md-color-scheme="slate"] .md-typeset table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* table headers: distinct tint + a rule separating them from the body */
+.md-typeset table thead th,
+.md-typeset table > tr:first-child th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-bottom: 2px solid var(--md-primary-fg-color--dark);
+}
+
+/* vertical column separators */
+.md-typeset table td,
+.md-typeset table th {
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table td:first-child,
+.md-typeset table th:first-child {
+  border-left: none;
+}
+
+/* --- keep the permanent left sidebar tree out of the way, since every
+   page now carries its own Home/Up bar (see .sv-topnav below) instead —
+   this just stops it reserving a column on every page. Delete this block
+   to get the standard MkDocs Material sidebar back. --- */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    display: none;
+  }
+  .md-content {
+    margin-left: 0;
+  }
+}
+
+/* --- top navbar: just "मुखपृष्ठम्" (Home) + "⬆ <text title>" (Up / TOC),
+   rendered by render_topnav() at build time — see site update notes. A
+   plain sticky bar right above each page's own heading, not part of the
+   MkDocs Material chrome itself (keeps this independent of any future
+   theme upgrade). ------------------------------------------------------ */
+.md-typeset .sv-topnav {
+  position: sticky;
+  top: 0.6rem;
+  z-index: 5;
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 2rem;
+  background: var(--md-primary-fg-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.md-typeset .sv-topnav p {
+  margin: 0;
+}
+
+.md-typeset .sv-topnav a {
+  color: var(--md-primary-bg-color);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Prev/Next (←/→) links — slightly heavier/larger than the plain text
+   links beside them, since they're icon-only and benefit from standing
+   out a bit more. */
+.md-typeset .sv-topnav a.sv-topnav-arrow {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* --- home page: one card per top-level content section (शास्त्रम्/
+   काव्यम्/...), each containing that section's own ग्रन्थाः (and, for the
+   topics-carrying section, विषयाः) — see build_home_page() in
+   generate_indices.py. Sized to sit side-by-side (small min-width, so two
+   cards comfortably share a row); wraps to stacked only on narrow/mobile
+   screens. Wraps automatically as sections are added via
+   site_config.yaml, no CSS changes needed. ------------------------------ */
+.sv-home-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.md-typeset .sv-home-card {
+  flex: 1 1 14rem;
+  min-width: 13rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-top: 0.3rem solid var(--md-primary-fg-color);
+  border-radius: 0.5rem;
+  padding: 0.9rem 1.2rem 1.2rem;
+  background: var(--md-default-bg-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.md-typeset .sv-home-card:hover {
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.13);
+  transform: translateY(-2px);
+}
+
+.md-typeset .sv-home-card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--md-primary-fg-color--dark);
+}
+
+.md-typeset .sv-home-card h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--md-primary-fg-color);
+  margin: 1rem 0 0.4rem;
+}
+
+.md-typeset .sv-home-card ul {
+  margin-top: 0.3rem;
+}
+
+.md-typeset .sv-home-card li {
+  margin: 0.2rem 0;
+  font-size: 0.92rem;
+}
+
+/* topic definitions table (build_topic_definitions_table in
+   generate_indices.py) — संज्ञा (term) column shares one rowspan'd cell
+   across every text defining the same term (several texts defining the
+   same term is expected, not an error) — center it vertically within
+   its merged span; Material's default table CSS handles everything
+   else. */
+.md-typeset td.sv-topic-term {
+  vertical-align: middle;
+}
+
+/* the small forward jump-link process_topic_tags() drops right after
+   every <topic> occurrence, to that topic's own page (see
+   generate_indices.py) — deliberately subtle: present without
+   competing with the surrounding text for attention. */
+.md-typeset a.sv-topic-jump {
+  font-size: 0.7em;
+  text-decoration: none;
+  opacity: 0.55;
+  padding-left: 0.05rem;
+}
+
+.md-typeset a.sv-topic-jump:hover {
+  opacity: 1;
+}
+
+/* a topic category collapsed behind expanded_by_default: false (see
+   render_topic_categories in generate_indices.py) — plain native
+   <details>/<summary>, just given the same heading-ish look as the
+   plain h2/h3/h4 categories sitting next to it, so collapsed and
+   expanded categories both read as one consistent list. */
+.md-typeset details.sv-topic-category {
+  border: none;
+  box-shadow: none;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.md-typeset details.sv-topic-category > summary {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.md-typeset details.sv-topic-category > summary::before {
+  background-color: var(--md-default-fg-color--light);
+}
+

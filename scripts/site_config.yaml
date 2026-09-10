@@ -1,0 +1,104 @@
+# site_config.yaml
+# =================
+# Site-level + structural settings for generate_indices.py. Edit this file
+# (not the script) to change these — it's re-read every run. Adding a new
+# top-level content section (a "card") is purely a matter of adding an
+# entry to content_sections below, PROVIDED the section's directory
+# follows the same on-disk convention:
+#
+#   <dir>/meta.yaml            (optional — section-level notes, not required)
+#   <dir>/<group>/<slug>/meta.yaml, <dir>/<group>/<slug>/<chapter>/*.md, ...
+#   <dir>/topics/<category>/    (optional — see `topics` below; every topic
+#                                lives inside a category directory, itself
+#                                needing its own meta.yaml with `title:` —
+#                                see generate_indices.py's module docstring
+#                                for the full topics/ layout, including
+#                                `expanded_by_default:`)
+#
+# No Python changes are needed to add a section that follows this shape.
+# Unlike sahitya (this script's sibling project), there is NO implicit
+# single `texts/` group here — every section lists its own text_groups:
+# explicitly (see below), since every card here is itself a grouping of
+# distinct sub-traditions/genres, not one flat list of texts.
+
+site_name: "शास्त्रम्"
+
+# Google Analytics 4 property ID (e.g. "G-XXXXXXXXXX") — wired into
+# mkdocs.yml's extra.analytics block (Material's built-in GA4 support).
+# Leave blank/omit to build with no analytics at all.
+google_analytics_property: ""
+
+theme:
+  primary: "deep orange"
+  accent: "amber"
+  # MkDocs Material's OWN built-in UI-string translation — search box,
+  # footer, edit-this-page, the "Table of contents" sidebar heading,
+  # etc. Full list of ~70 supported codes:
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/
+  # "sa" (Sanskrit) is Material's own official pack.
+  language: "sa"
+
+labels:
+  home_title: "शास्त्रम्"
+  # Every other UI string the generated site shows — a differently
+  # labeled or non-Devanagari deployment only needs to edit this file.
+  home_nav_label: "मुखपृष्ठम्"        # nav root entry (mkdocs.yml nav's first item)
+  home_button_label: "मुखपृष्ठम्"     # the Home button in every page's own top navbar
+  intro_nav_label: "परिचयः"           # per-text "introduction" TOC nav label
+  author_label: "कर्ता:"              # prefix before a text's author on its TOC page
+  shloka_list_heading: "श्लोकसूची"    # chapter pages' verse list heading
+  definitions_heading: "परिभाषाः"     # a topic page's auto-generated definitions table (<topic define="...">)
+  term_column_heading: "संज्ञा"       # definitions table column: the term being defined (<topic define="...">'s value)
+  definition_column_heading: "परिभाषा" # definitions table column: the definition text itself
+  source_column_heading: "मूलम्"      # definitions table column: which text/chapter it's from
+  references_heading: "सन्दर्भाः"     # a topic page's "cited from" back-reference list (<topic>)
+
+# Default word used for a chapter's nav label when neither the chapter's
+# own meta.yaml (chapter_name:) nor the text's meta.yaml (chapter_type:)
+# provides one. Per-section fallback lives on each content_sections entry
+# below (default_chapter_word); this is only the last-resort fallback if
+# a section entry omits it too.
+default_chapter_word: "अध्यायः"
+
+# Site-wide default for whether a shloka's pada line breaks are rendered
+# as explicit <br /> tags. .shloka uses white-space: normal (see
+# docs/stylesheets/custom.css), so a plain newline within a shloka's
+# source text collapses to a space unless generate_indices.py puts an
+# explicit line break back in.
+# false (the default if this key is absent): don't inject any — a shloka
+#   renders as running text, only line-wrapped by the browser.
+# true: each pada lands on its own line, exactly like the source.
+# Override per-book in that text's meta.yaml (same key name).
+maintain_shloka_linebreak: true
+
+content_sections:
+  # --- Card 1: Advaita Vedanta ------------------------------------------
+  - dir: "advaita"
+    h1_label: "अद्वैतवेदान्तः"
+    h2_topics_label: "विषयाः"
+    default_chapter_word: "अध्यायः"
+    # This is the site's one topics-carrying section for now (a single
+    # global topics/ folder, same as sahitya used to have) — per
+    # shastra-init-request.md, this can be split into per-card topics
+    # later if the number of topics grows enough to justify it.
+    topics: true
+    text_groups:
+      - dir: "prakarana"
+        h2_label: "प्रकरणग्रन्थाः"
+      - dir: "prasthanatraya"
+        h2_label: "प्रस्थानत्रयी"
+      - dir: "siddhigrantha"
+        h2_label: "सिद्धिग्रन्थाः"
+
+  # --- Card 2: other shastras --------------------------------------------
+  - dir: "itarashastra"
+    h1_label: "इतरशास्त्राणि"
+    default_chapter_word: "अध्यायः"
+    topics: false
+    text_groups:
+      - dir: "vyakarana"
+        h2_label: "व्याकरणम्"
+      - dir: "tarka"
+        h2_label: "तर्कः"
+      - dir: "yoga"
+        h2_label: "योगः"
