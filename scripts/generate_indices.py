@@ -135,16 +135,18 @@ Layout expected on disk:
                 <chapter>/
                     meta.yaml    (optional) chapter_name
                     *.md         section files, concatenated in numeric order
-        topics/                 (optional, only on the section with
-                                  `topics: true` in site_config.yaml)
-            <category>/
-                meta.yaml         title, order, expanded_by_default (default true — see
-                                  build_home_page/build_domain_index_page/
-                                  build_topics_index_page)
-                <slug>.md         a single-file topic, OR:
-                <slug>/            a multi-file topic directory:
-                    meta.yaml       title, order (this topic's position among others IN ITS CATEGORY)
-                    *.md            concatenated in each file's own order: (fallback: filename)
+
+    <topics.dir>/               (optional, repo root — NOT inside any
+                                  content section; see site_config.yaml's
+                                  `topics:` block, e.g. "topics/")
+        <category>/
+            meta.yaml         title, order, expanded_by_default (default true — see
+                              build_home_page/build_domain_index_page/
+                              build_topics_index_page)
+            <slug>.md         a single-file topic, OR:
+            <slug>/            a multi-file topic directory:
+                meta.yaml       title, order (this topic's position among others IN ITS CATEGORY)
+                *.md            concatenated in each file's own order: (fallback: filename)
 
     assets/                      (optional, repo root — NOT inside any
                                   section) — static assets (audio/*.mp3
@@ -233,12 +235,10 @@ class SectionConfig:
     def __init__(self, raw: dict):
         self.dir = str(raw.get("dir", "")).strip()
         self.h1_label = str(raw.get("h1_label", self.dir)).strip()
-        self.h2_topics_label = str(raw.get("h2_topics_label", "विषयाः")).strip()
         self.default_chapter_word = (
             str(raw.get("default_chapter_word", "")).strip()
             or str(SITE_CONFIG.get("default_chapter_word", "अध्यायः")).strip()
         )
-        self.has_topics = bool(raw.get("topics", False))
         # text_groups: lets a section split its texts across MULTIPLE
         # directories (e.g. kavya/gadya/, kavya/stotra/, kavya/padya/
         # instead of a single kavya/texts/), each becoming its own H2
@@ -268,14 +268,37 @@ class SectionConfig:
         return DOCS / self.dir
 
     @property
-    def topics_src(self) -> Path:
-        return self.src / "topics"
+    def out_dir(self) -> Path:
+        return DOCS / self.dir
+
+
+class TopicsConfig:
+    """The (optional, site-wide, at-most-one) `topics:` block in
+    site_config.yaml — topics live at the repo root, independent of any
+    one content section (a topic can be, and often is, referenced from
+    texts across multiple different sections/cards — see process_topic_tags),
+    so unlike SectionConfig this isn't tied to any section's own
+    directory."""
+
+    def __init__(self, raw: dict):
+        self.dir = str(raw.get("dir", "topics")).strip()
+        self.h1_label = str(raw.get("h1_label", "विषयाः")).strip()
+
+    @property
+    def src(self) -> Path:
+        return ROOT / self.dir
+
+    @property
+    def out_dir(self) -> Path:
+        return DOCS / self.dir
 
 
 SECTIONS: list[SectionConfig] = [
     SectionConfig(raw) for raw in (SITE_CONFIG.get("content_sections") or [])
 ]
-TOPICS_SECTION = next((s for s in SECTIONS if s.has_topics), None)
+TOPICS_CONFIG: TopicsConfig | None = (
+    TopicsConfig(SITE_CONFIG["topics"]) if isinstance(SITE_CONFIG.get("topics"), dict) else None
+)
 
 
 def group_texts(section: SectionConfig, texts: list["Text"]) -> list[tuple[TextGroup, list["Text"]]]:
@@ -958,21 +981,19 @@ def discover_ref_pages(kind: str, folder: Path, rel_dir: str, exclude: set[str] 
 #     definitions onto one shared topic page, e.g. name="साधनचतुष्टयम्"
 #     define="शमः" and, elsewhere, name="साधनचतुष्टयम्" define="दमः").
 #
-# Every `<topic name="X">...</topic>` occurrence, define="..." or not,
-# registers a Reference on topic X's own RefPage (page.references — see
-# render_ref_page) — a plain "cited from here" link, same mechanism
-# sahitya used for chandas/alankara/topic back-links, labeled by default
-# with the tag's own inner text (or `context="..."` instead, when given
-# — for occurrences that don't make a good standalone link label
-# themselves). What's new here is that (a) the anchor is per-OCCURRENCE,
-# not per-section — the tag is rewritten (spliced) into `<span
-# id="tpN">...</span>` in place, so a reader clicking a back-link on the
-# topic page lands on the exact paragraph, not just the top of the
-# section/chapter it's in; (b) a small forward jump-link to that topic's
-# own page is inserted right after it too, so the reverse hop (from the
-# text, straight to the topic) is just as immediate; and (c) the same
-# occurrence, if define="<term>", also lands in TopicDefinitions (a
-# परिभाषाः-style table built once per topic — see build_topic_definitions_table).
+# `context=` and `define=` are independent (see process_topic_tags for
+# the full rules) — `context="..."` adds a सन्दर्भाः (reference) entry
+# labeled with that string, `define="<term>"` adds a परिभाषाः
+# (definition) entry, either or both may be given, and at least one is
+# required. What's new here vs. sahitya's old mechanisms is that (a) the
+# anchor is per-OCCURRENCE, not per-section — the tag is rewritten
+# (spliced) into `<span id="tpN">...</span>` in place, so a reader
+# clicking a back-link on the topic page lands on the exact paragraph,
+# not just the top of the section/chapter it's in; (b) a small forward
+# jump-link to that topic's own page is inserted right after it too, so
+# the reverse hop (from the text, straight to the topic) is just as
+# immediate; and (c) a same-labeled reference repeated within one
+# chapter is deduped to its first occurrence (see seen_ref_labels).
 #
 # Unlike sahitya's <paribhasha>, the tag here IS rewritten/stripped from
 # the output (into a `<span id="...">` plus a jump-link), since we need a
@@ -1006,6 +1027,7 @@ def process_topic_tags(
     body: str, chapter: "Chapter", topics: dict[str, "RefPage"],
     definitions: dict[str, list[TopicDefinition]],
     page_rel_out_file: str, section_title: str | None, start_index: int,
+    seen_ref_labels: dict[str, set[str]],
     source_for_warning: object = "", primary: bool = True,
 ) -> tuple[str, int]:
     """Scans `body` for `<topic name="..." define="?" context="?">...</topic>`
@@ -1013,21 +1035,47 @@ def process_topic_tags(
     surrounding content displays exactly as authored, just with an anchor
     dropped at that precise spot) immediately followed by a small forward
     jump-link to that topic's own page — and, when `primary`, registering
-    a Reference on the matching topic's page plus (for define="term") a
-    TopicDefinition. `start_index` lets callers number tp-anchors
-    contiguously across an entire page (a full_chapter-mode chapter
-    concatenates every section onto one page, so ids must stay unique
-    across all of them — see render_chapter_full/record_shloka_references
-    for the same pattern with shloka `sN` anchors); a sections-mode
-    caller instead resets this to 0 per section (each section already has
-    its own page/URL). Returns (new_body, next_index).
+    a Reference and/or TopicDefinition on the matching topic's page.
+    `start_index` lets callers number tp-anchors contiguously across an
+    entire page (a full_chapter-mode chapter concatenates every section
+    onto one page, so ids must stay unique across all of them — see
+    render_chapter_full/record_shloka_references for the same pattern
+    with shloka `sN` anchors); a sections-mode caller instead resets this
+    to 0 per section (each section already has its own page/URL).
+    Returns (new_body, next_index).
 
-    `context="..."`, if given, is used as-is (html-escaped) as this
-    occurrence's सन्दर्भाः list label, instead of the default (the tag's
-    own inner text, trimmed to a preview) — for occurrences where the
-    wrapped passage itself doesn't make a good standalone link label
-    (e.g. tagging a whole extended discussion rather than one quotable
-    line)."""
+    `context=` and `define=` are independent, and at least one is
+    required (a `<topic>` occurrence with neither is flagged with a
+    warning and does nothing beyond the anchor/jump-link — see below):
+      - `context="..."` ALONE adds a सन्दर्भाः (reference) entry, labeled
+        with this string — a plain "topic X is discussed/relevant here"
+        pointer, no definition implied.
+      - `define="<term>"` ALONE adds a परिभाषाः (definition) entry for
+        TERM — a definition doesn't need its own separate सन्दर्भाः row
+        too (that would just be the same location listed twice on the
+        same page); if the passage is ALSO worth a standalone सन्दर्भाः
+        entry in its own right, add `context=` too.
+      - BOTH together add both, one row each, `context`'s value used as
+        the reference's label.
+    (There's no more inner-text fallback for the reference label — a
+    reference now always needs an explicit `context=`, precisely so
+    `define`-only occurrences can opt out of a reference entry without
+    a magic "skip" value — see shastra-init-request.md's discussion of
+    this.)
+
+    `seen_ref_labels` (topic name -> the set of सन्दर्भाः labels already
+    added for THIS topic IN THIS CHAPTER) dedupes reference entries: if
+    two occurrences in the same chapter would add the exact same label
+    for the exact same topic — whether by both giving the same
+    `context=`, or one's inner text matching another's `context=`, or
+    (before this dedup) any other combination that resolves to the same
+    label — only the FIRST is kept, so the reference's backlink lands on
+    the first occurrence and the table doesn't show the same-looking row
+    twice. Callers create ONE `seen_ref_labels` dict per chapter (not
+    per section/page — see render_chapter_full/render_chapter_sections)
+    and reuse it across every section in that chapter, since "for a
+    given chapter" is chapter-wide even when chapter_display_style:
+    sections splits that chapter across several separate pages."""
     counter = start_index
     splices: list[tuple[int, int, str]] = []
     for m in TOPIC_TAG_RE.finditer(body):
@@ -1055,20 +1103,29 @@ def process_topic_tags(
                  f"(no matching topics/*/*.md or topics/*/*/meta.yaml title '{name}')")
             continue
         context = (attrs.get("context") or "").strip()
-        preview = html.escape(context) if context else preview_text(inner)
-        topics[name].references.append(Reference(name, chapter, anchor, preview, page_rel_out_file, section_title))
         term = (attrs.get("define") or "").strip()
+        if not context and not term:
+            warn(f"{source_for_warning}: <topic name=\"{name}\"> has neither context= nor define= "
+                 f"— it won't show up anywhere on {name}'s own page. Add context=\"...\" for a plain "
+                 f"reference, define=\"<term>\" for a definition, or both.")
+            continue
+        if context:
+            label = html.escape(context)
+            already_seen = seen_ref_labels.setdefault(name, set())
+            if label not in already_seen:
+                already_seen.add(label)
+                topics[name].references.append(Reference(name, chapter, anchor, label, page_rel_out_file, section_title))
         if term:
             lines = [ln.strip() for ln in re.sub(r"<[^>]+>", "", inner).splitlines() if ln.strip()]
             text_html = "<br>".join(html.escape(ln) for ln in lines)
             if not text_html:
                 warn(f"{source_for_warning}: <topic name=\"{name}\" define=\"{term}\"> has no content — skipping definition")
             else:
-                label = f"{chapter.text.title} — {chapter.nav_label}"
+                def_label = f"{chapter.text.title} — {chapter.nav_label}"
                 if section_title:
-                    label = f"{label} — {section_title}"
+                    def_label = f"{def_label} — {section_title}"
                 definitions.setdefault(name, []).append(
-                    TopicDefinition(term, text_html, page_rel_out_file, anchor, label)
+                    TopicDefinition(term, text_html, page_rel_out_file, anchor, def_label)
                 )
     return apply_splices(body, splices), counter
 
@@ -1101,8 +1158,20 @@ def build_topic_definitions_table(topic_rel_file: str, entries: list[TopicDefini
             cells = [term_cell] if i == 0 else []
             cells.append(f'<td><a href="{href}">{e.text_html}</a></td>')
             cells.append(f"<td>{html.escape(e.label)}</td>")
-            rows.append("<tr>" + "".join(cells) + "</tr>")
-    thead = "<tr><th>{}</th><th>{}</th><th>{}</th></tr>".format(
+            # a single space between adjacent </td><td> boundaries below —
+            # purely for MkDocs Material's search-index text extraction,
+            # which concatenates adjacent inline elements with NO
+            # separating whitespace of its own (confirmed against a real
+            # build's search_index.json: without this, "संज्ञा" and
+            # "परिभाषा" glue into one unsearchable "संज्ञापरिभाषा" token,
+            # and a संज्ञा value like "शमः" glues onto the परिभाषा text
+            # right after it into "शमःशमः...", neither of which matches
+            # a search for the plain word). Browsers ignore this
+            # whitespace for layout purposes (table cells already have
+            # their own visual separation), so it changes nothing
+            # visible — only what's indexed.
+            rows.append("<tr>" + " ".join(cells) + "</tr>")
+    thead = "<tr><th>{}</th> <th>{}</th> <th>{}</th></tr>".format(
         site_label("term_column_heading", "संज्ञा"),
         site_label("definition_column_heading", "परिभाषा"),
         site_label("source_column_heading", "मूलम्"),
@@ -1392,7 +1461,16 @@ def render_commentary_div(cls_raw: str, type_key: str, attrs: str, content: str,
         if hidden_initial:
             classes = f"{classes} {HIDDEN_INITIAL_CLASS}"
     inner = content.strip()
-    rendered = f"<b>{label}</b><br>{inner}" if label else inner
+    # a literal space between </b><br> and the content below is for
+    # MkDocs Material's search-index text extraction, which — like the
+    # topic definitions table (see build_topic_definitions_table) —
+    # concatenates adjacent inline elements with no whitespace of its
+    # own, so without this a label glues straight onto the word right
+    # after it (e.g. "शाङ्करभाष्यम्अत्र..."), unsearchable as either
+    # word. Visually a no-op: normal inline layout collapses/trims
+    # whitespace at the start of a line, which is exactly where this
+    # lands right after the <br>.
+    rendered = f"<b>{label}</b><br> {inner}" if label else inner
     # data-type is re-emitted (data-name and any other original attribute
     # is intentionally dropped — it was only ever needed to resolve the
     # label above, at build time; CSS keys off the sv-style-* class
@@ -1577,6 +1655,8 @@ def clean_output():
     for section in SECTIONS:
         if section.out_dir.exists():
             shutil.rmtree(section.out_dir)
+    if TOPICS_CONFIG and TOPICS_CONFIG.out_dir.exists():
+        shutil.rmtree(TOPICS_CONFIG.out_dir)
     if ASSETS_OUT.exists():
         shutil.rmtree(ASSETS_OUT)
     index_md = DOCS / "index.md"
@@ -1698,12 +1778,15 @@ def render_topic_categories(rel_file: str, categories: list["TopicCategory"], he
     return lines
 
 
-def build_domain_index_page(section: SectionConfig, texts: list[Text], topic_categories: list["TopicCategory"]) -> str:
+def build_domain_index_page(section: SectionConfig, texts: list[Text]) -> str:
     """A section's own landing page — mirrors its home-page card (texts,
-    grouped by section.text_groups, then topics grouped by category if
-    this is the topics-carrying section), just as a full page rather than
-    a card. This is the "Up" target for every text's own TOC page, and
-    (via the "मुखपृष्ठम्" button) reachable from anywhere."""
+    grouped by section.text_groups), just as a full page rather than a
+    card. This is the "Up" target for every text's own TOC page, and
+    (via the "मुखपृष्ठम्" button) reachable from anywhere. Topics are NOT
+    part of this — they're a root-level, section-independent sibling of
+    every content section (a topic is commonly referenced from texts
+    across several different sections — see process_topic_tags), with
+    their own root-level listing/nav entry; see build_topics_index_page."""
     rel_file = f"{section.dir}/index.md"
     lines = [render_topnav(rel_file, None, None), f"# {section.h1_label}", ""]
     for group, texts_in_group in group_texts(section, texts):
@@ -1713,24 +1796,19 @@ def build_domain_index_page(section: SectionConfig, texts: list[Text], topic_cat
             target = f"{t.rel_out_dir}/index.md"
             lines.append(f"- [{t.title}]({rel_link(rel_file, target)})")
         lines.append("")
-    if section.has_topics and topic_categories:
-        lines.append(f"## {section.h2_topics_label}")
-        lines.append("")
-        lines.extend(render_topic_categories(rel_file, topic_categories, "###"))
     return "\n".join(lines)
 
 
-def build_topics_index_page(section: SectionConfig, topic_categories: list["TopicCategory"]) -> str:
-    """Dedicated विषयाः landing page — the "Up" target for every individual
-    topic page, so going "up" from inside a topic lands you back among
-    *other topics* (grouped by category), not back among the texts
-    (which is a different, unrelated listing one level further up, at
-    the section's own domain index page)."""
-    rel_file = f"{section.dir}/topics/index.md"
-    up_target = f"{section.dir}/index.md"
+def build_topics_index_page(topics_config: "TopicsConfig", topic_categories: list["TopicCategory"]) -> str:
+    """The root-level विषयाः landing page — the "Up" target for every
+    individual topic page, AND (via its own home-page card/nav entry)
+    directly reachable from anywhere, exactly like a content section's
+    own domain index page — topics are a sibling of every section here,
+    not nested inside one (see TopicsConfig)."""
+    rel_file = f"{topics_config.dir}/index.md"
     lines = [
-        render_topnav(rel_file, up_target, section.h1_label),
-        f"# {section.h2_topics_label}",
+        render_topnav(rel_file, None, None),
+        f"# {topics_config.h1_label}",
         "",
     ]
     lines.extend(render_topic_categories(rel_file, topic_categories, "##"))
@@ -1813,6 +1891,7 @@ def render_chapter_full(
     all_shlokas: list[Shloka] = []
     shloka_counter = 0
     topic_tag_counter = 0
+    seen_ref_labels: dict[str, set[str]] = {}
     for i, section in enumerate(chapter.sections):
         raw = section.read_text(encoding="utf-8")
         fm, body = split_frontmatter(raw)
@@ -1820,7 +1899,7 @@ def render_chapter_full(
         body = expand_notes_shorthand(body)
         body, topic_tag_counter = process_topic_tags(
             body, chapter, topics, definitions, current_rel_file, None, topic_tag_counter,
-            source_for_warning=section, primary=primary,
+            seen_ref_labels, source_for_warning=section, primary=primary,
         )
         body = process_content_sections(
             body, chapter.default_class, chapter.text.effective_gloss_types, source_for_warning=section,
@@ -1882,6 +1961,10 @@ def render_chapter_sections(
     next_ch = siblings[idx + 1] if idx < len(siblings) - 1 else None
 
     toc_entries: list[tuple[str, str]] = []  # (display_title, rel_out_file)
+    # one dict for the WHOLE chapter (not reset per section) — see
+    # process_topic_tags: "for a given chapter" dedup applies across
+    # every section's own page here, not just within one.
+    seen_ref_labels: dict[str, set[str]] = {}
 
     for i, section in enumerate(chapter.sections):
         raw = section.read_text(encoding="utf-8")
@@ -1893,7 +1976,7 @@ def render_chapter_sections(
         body = expand_notes_shorthand(body)
         body, _ = process_topic_tags(
             body, chapter, topics, definitions, section_rel_file, display_title, 0,
-            source_for_warning=section, primary=True,
+            seen_ref_labels, source_for_warning=section, primary=True,
         )
         body = process_content_sections(
             body, chapter.default_class, chapter.text.effective_gloss_types, source_for_warning=section,
@@ -1957,11 +2040,11 @@ H1_RE = re.compile(r"^\s*#\s+\S")
 
 
 def render_ref_page(page: RefPage, definitions: list[TopicDefinition]) -> str:
-    # "Up" goes to the विषयाः listing (other topics), NOT to the section's
-    # texts listing one level further up — those are a different, sibling
-    # menu, not this topic's parent.
-    up_target = f"{TOPICS_SECTION.dir}/topics/index.md" if TOPICS_SECTION else None
-    up_label = TOPICS_SECTION.h2_topics_label if TOPICS_SECTION else None
+    # "Up" goes to the विषयाः listing (other topics, root-level — see
+    # TopicsConfig), not to any one content section's own texts listing —
+    # those are an unrelated, sibling menu, not this topic's parent.
+    up_target = f"{TOPICS_CONFIG.dir}/index.md" if TOPICS_CONFIG else None
+    up_label = TOPICS_CONFIG.h1_label if TOPICS_CONFIG else None
     parts = [render_topnav(page.rel_out_file, up_target, up_label)]
     body = page.body.strip()
     if not H1_RE.match(body):
@@ -1990,10 +2073,14 @@ def render_ref_page(page: RefPage, definitions: list[TopicDefinition]) -> str:
 
 # ---------------------------------------------------------------------------
 # Home page — one card per configured content section (see site_config.yaml
-# content_sections:), each listing that section's texts (and, for the
-# topics-carrying section, its विषयाः too). Cards are plain <div
-# class="sv-home-card">...</div> — docs/stylesheets/custom.css draws the
-# box; add a new section to site_config.yaml and its card just appears.
+# content_sections:), plus one more card for topics (see TopicsConfig) if
+# configured — topics are a root-level sibling of every section, not
+# nested inside one (a topic is commonly referenced from texts across
+# several different sections — see process_topic_tags), so they get
+# their own card, in the same position every other card does. Cards are
+# plain <div class="sv-home-card">...</div> — docs/stylesheets/custom.css
+# draws the box; add a new section to site_config.yaml and its card just
+# appears.
 # ---------------------------------------------------------------------------
 
 def build_home_page(
@@ -2014,10 +2101,15 @@ def build_home_page(
             for t in texts_in_group:
                 lines.append(f"- [{t.title}]({t.rel_out_dir}/index.md)")
             lines.append("")
-        if section.has_topics and topic_categories:
-            lines.append(f"### {section.h2_topics_label}")
-            lines.append("")
-            lines.extend(render_topic_categories("index.md", topic_categories, "####"))
+        lines.append("</div>")
+        lines.append("")
+
+    if topic_categories:
+        lines.append('<div class="sv-home-card" markdown="1">')
+        lines.append("")
+        lines.append(f"## {TOPICS_CONFIG.h1_label}")
+        lines.append("")
+        lines.extend(render_topic_categories("index.md", topic_categories, "###"))
         lines.append("</div>")
         lines.append("")
 
@@ -2193,14 +2285,14 @@ def build_nav(
         entries = [{section.h1_label: f"{section.dir}/index.md"}]
         for group, texts_in_group in group_texts(section, texts):
             entries.append({group.h2_label: [text_nav(t) for t in texts_in_group]})
-        if section.has_topics and topic_categories:
-            entries.append(
-                {section.h2_topics_label: [
-                    {section.h2_topics_label: f"{section.dir}/topics/index.md"},
-                    *({cat.title: [{t.title: t.rel_out_file} for t in cat.topics]} for cat in topic_categories),
-                ]}
-            )
         nav.append({section.h1_label: entries})
+    if TOPICS_CONFIG and topic_categories:
+        nav.append(
+            {TOPICS_CONFIG.h1_label: [
+                {TOPICS_CONFIG.h1_label: f"{TOPICS_CONFIG.dir}/index.md"},
+                *({cat.title: [{t.title: t.rel_out_file} for t in cat.topics]} for cat in topic_categories),
+            ]}
+        )
     return nav
 
 
@@ -2219,12 +2311,11 @@ def main():
     topics: dict[str, RefPage] = {}
     definitions: dict[str, list[TopicDefinition]] = {}
     topic_categories: list[TopicCategory] = []
-    topics_rel_dir = f"{TOPICS_SECTION.dir}/topics" if TOPICS_SECTION else ""
 
-    if TOPICS_SECTION:
-        topic_categories = discover_topic_categories(TOPICS_SECTION.topics_src, topics_rel_dir)
+    if TOPICS_CONFIG:
+        topic_categories = discover_topic_categories(TOPICS_CONFIG.src, TOPICS_CONFIG.dir)
         for cat in topic_categories:
-            cat_topics = discover_ref_pages("topic", TOPICS_SECTION.topics_src / cat.slug, cat.rel_dir)
+            cat_topics = discover_ref_pages("topic", TOPICS_CONFIG.src / cat.slug, cat.rel_dir)
             for title, page in cat_topics.items():
                 if title in topics:
                     warn(f"duplicate topic title '{title}' between {topics[title].path} (category "
@@ -2264,13 +2355,14 @@ def main():
                 process_chapter(ch, topics, definitions)
             write_md(t.out_dir / "index.md", build_text_index_page(t))
 
-        write_md(DOCS / f"{section.dir}/index.md", build_domain_index_page(section, texts, topic_categories))
+        write_md(DOCS / f"{section.dir}/index.md", build_domain_index_page(section, texts))
 
-    # --- topics index page (the "Up" target for individual topic pages) --
-    if TOPICS_SECTION and topic_categories:
+    # --- topics index page (root-level — the "Up" target for individual
+    # topic pages, and directly reachable from the home page/nav) ---------
+    if TOPICS_CONFIG and topic_categories:
         write_md(
-            DOCS / f"{TOPICS_SECTION.dir}/topics/index.md",
-            build_topics_index_page(TOPICS_SECTION, topic_categories),
+            DOCS / f"{TOPICS_CONFIG.dir}/index.md",
+            build_topics_index_page(TOPICS_CONFIG, topic_categories),
         )
 
     # --- topic pages: write with injected परिभाषाः table + सन्दर्भाः back-links

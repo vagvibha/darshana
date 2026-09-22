@@ -8,18 +8,21 @@
 #
 #   <dir>/meta.yaml            (optional — section-level notes, not required)
 #   <dir>/<group>/<slug>/meta.yaml, <dir>/<group>/<slug>/<chapter>/*.md, ...
-#   <dir>/topics/<category>/    (optional — see `topics` below; every topic
-#                                lives inside a category directory, itself
-#                                needing its own meta.yaml with `title:` —
-#                                see generate_indices.py's module docstring
-#                                for the full topics/ layout, including
-#                                `expanded_by_default:`)
 #
 # No Python changes are needed to add a section that follows this shape.
 # Unlike sahitya (this script's sibling project), there is NO implicit
 # single `texts/` group here — every section lists its own text_groups:
 # explicitly (see below), since every card here is itself a grouping of
 # distinct sub-traditions/genres, not one flat list of texts.
+#
+# Topics (see `topics:` below) are NOT part of any content section — they
+# live at the repo root (`<topics.dir>/<category>/...`), since a topic is
+# commonly referenced from texts across several different sections (see
+# generate_indices.py's process_topic_tags) and so isn't naturally owned
+# by any one of them. Every topic lives inside a category directory,
+# itself needing its own meta.yaml with `title:` — see
+# generate_indices.py's module docstring for the full topics/ layout,
+# including `expanded_by_default:`.
 
 site_name: "शास्त्रम्"
 
@@ -71,17 +74,20 @@ default_chapter_word: "अध्यायः"
 # Override per-book in that text's meta.yaml (same key name).
 maintain_shloka_linebreak: true
 
+# Topics — optional; omit this whole key entirely for a site with no
+# topics at all. `dir:` is the repo-root directory topic categories live
+# under (see the module docstring for the full layout); `h1_label:` is
+# both this listing page's own heading AND its home-page card's/nav
+# entry's label.
+topics:
+  dir: "topics"
+  h1_label: "विषयाः"
+
 content_sections:
   # --- Card 1: Advaita Vedanta ------------------------------------------
   - dir: "advaita"
     h1_label: "अद्वैतवेदान्तः"
-    h2_topics_label: "विषयाः"
     default_chapter_word: "अध्यायः"
-    # This is the site's one topics-carrying section for now (a single
-    # global topics/ folder, same as sahitya used to have) — per
-    # shastra-init-request.md, this can be split into per-card topics
-    # later if the number of topics grows enough to justify it.
-    topics: true
     text_groups:
       - dir: "prakarana"
         h2_label: "प्रकरणग्रन्थाः"
@@ -94,7 +100,6 @@ content_sections:
   - dir: "itarashastra"
     h1_label: "इतरशास्त्राणि"
     default_chapter_word: "अध्यायः"
-    topics: false
     text_groups:
       - dir: "vyakarana"
         h2_label: "व्याकरणम्"
