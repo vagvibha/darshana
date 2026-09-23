@@ -83,6 +83,13 @@ topics:
   dir: "topics"
   h1_label: "विषयाः"
 
+dictionaries:
+  - name: Advaita
+    folder: advaita
+  - name: Darshana
+    folder: darshana
+
+
 content_sections:
   # --- Card 1: Advaita Vedanta ------------------------------------------
   - dir: "advaita"
