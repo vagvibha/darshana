@@ -4,21 +4,13 @@
 # `nav:` list itself each time it runs.
 
 nav:
+- मुखपृष्ठम्: index.md
 
 hooks:
   - scripts/mkdocs_hooks.py
 
 site_name: शास्त्रम्
 docs_dir: docs
-
-# use_directory_urls: false — pages build as foo.html (not foo/index.html
-# served via a clean "foo/" URL) so a plain double-click on a file in a
-# downloaded-and-unzipped copy of site/ (no web server, e.g. a phone/
-# tablet's file browser, offline) opens and links between pages
-# correctly. See .github/workflows/deploy.yml for the zip artifact this
-# is aimed at; the live GitHub Pages deployment works identically either
-# way, this setting only matters for the offline copy.
-use_directory_urls: false
 
 theme:
   name: material
@@ -27,14 +19,7 @@ theme:
     # navigation.tabs is deliberately OFF: the top bar is just the two
     # buttons rendered by render_topnav() (Home / Up-to-TOC) on every
     # page, not a tab per top-level section — see site update notes.
-    #
-    # navigation.instant is deliberately OFF too (sahitya's copy of this
-    # template had it on): it fetches pages via JS (History API +
-    # fetch()), which fails under a plain file:// URL (no web server) —
-    # exactly the offline/local-browsing case use_directory_urls: false
-    # above is for. Plain links work identically either way when the
-    # site IS served over http(s) (e.g. GitHub Pages), just without the
-    # instant/no-reload transition.
+    - navigation.instant
     - navigation.indexes
     - navigation.top
     - toc.follow
@@ -57,8 +42,12 @@ extra_javascript:
 # https://mkdocs-macros-plugin.readthedocs.io/en/latest/pages/ for the
 # full templating surface (also reaches config/extra values, and lets a
 # page reference another page's frontmatter, conditionals, loops, etc.).
-# No define_env() hook file is configured — this site only uses the
-# built-in page/config access, not custom Python macros.
+# module_name: points at scripts/macros_env.py (HAND-MAINTAINED, not
+# regenerated — same convention as the mkdocs_hooks.py hooks: entry
+# below) — its define_env() registers custom Jinja macros callable from
+# any page's body, on top of the built-in page.meta.*/config access.
+# Currently just xref() — a relative-link helper that replaces fragile
+# root-absolute links (see its own docstring in macros_env.py for why).
 #
 # Jinja's default comment syntax, {#... #}, collides with the
 # `{#some-id}` attr_list convention already used in this site's source
@@ -69,6 +58,7 @@ extra_javascript:
 plugins:
   - search
   - macros:
+      module_name: scripts/macros_env
       j2_comment_start_string: "{##"
       j2_comment_end_string: "##}"
 
@@ -96,11 +86,10 @@ markdown_extensions:
       # importable/installed packages, and a project-local file isn't
       # one, so this couldn't be a plain inline config value.
 
-# A chapter_display_style: sections chapter's individual per-section
-# pages, and its optional full_chapter_label: combined-reading page, are
-# intentionally not added to nav (only reachable by clicking through from
-# that chapter's own landing/TOC page — see render_chapter_sections) —
-# tell MkDocs not to warn/fail on them under --strict.
+# The chandas/alankara detail pages under topics/_chandas/ and
+# topics/_alankara/ are intentionally not linked from nav (only reachable
+# by clicking an entry's name in topics/chandas.md / alankara.md), so tell
+# MkDocs not to warn/fail on them under --strict.
 validation:
   nav:
     omitted_files: ignore

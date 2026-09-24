@@ -2,6 +2,7 @@ title: लघुवासुदेवमननम्
 chapters: वर्णकानि
 author: वासुदेवेन्द्रः
 default_class: vritti
+source: "ocr"
 gloss_types:
   - data_type: notes
     css_style: fine_print
