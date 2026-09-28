@@ -90,6 +90,7 @@ dictionaries:
     folder: darshana
 
 
+content_root: "contents"
 content_sections:
   # --- Card 1: Advaita Vedanta ------------------------------------------
   - dir: "advaita"
