@@ -238,14 +238,14 @@ types:
 
   # claim: the original unlabeled question-side type (used in rgd) —
   # same box as objection, but no default label.
-  - data_type: claim
+  - data_type: refute           # the answer to any of the above
     class: vada
-    css_style: vada_question
+    css_style: vada_answer
+    label: "सिद्धान्तः"
     label_from_attr: label
     hideable: false
     hidden_by_default: false
-
-  - data_type: refute           # the answer to any of the above
+  - data_type: answer
     class: vada
     css_style: vada_answer
     label: "समाधानम्"
