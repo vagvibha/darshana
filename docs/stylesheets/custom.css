@@ -222,6 +222,11 @@
   border-left: 3px solid var(--sv-vada-accent);
   border-radius: 0.2rem;
   background: var(--sv-vada-bg);
+  /* a box nested inside a muted/italic gloss (e.g. a tika's own
+     objection — basic_gloss is muted, standout_italic italic) reads as
+     primary text, not as part of that gloss's styling */
+  color: var(--md-default-fg-color);
+  font-style: normal;
 }
 
 .sv-style-vada_question {
