@@ -24,7 +24,7 @@
 # generate_indices.py's module docstring for the full topics/ layout,
 # including `expanded_by_default:`.
 
-site_name: "शास्त्रम्"
+site_name: "वेदान्तर्शनम्"
 
 # Google Analytics 4 property ID (e.g. "G-XXXXXXXXXX") — wired into
 # mkdocs.yml's extra.analytics block (Material's built-in GA4 support).
