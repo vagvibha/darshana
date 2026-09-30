@@ -75,17 +75,35 @@ jobs:
       # web server and no internet connection — every link/asset inside
       # it is a relative file:// path. This is a completely separate
       # artifact from the Pages deployment above; it's for offline
-      # reading, not for serving the live site.
+      # reading, not for serving the live site. It unzips into its own
+      # darshana/ folder, so it can sit next to other sites' offline
+      # copies without mixing files.
       - name: Zip site for offline use
+        env:
+          SITE_DIR: darshana
+          # "false" (default): the offline copy includes this site's own
+          # assets (everything under contents/assets/, e.g. audio).
+          # "true": leave them out for a much smaller zip — pages still
+          # work, only those files (e.g. an <audio> player's mp3) are
+          # missing. Only files that came from contents/assets/ are
+          # removed; site/assets/ also holds MkDocs Material's own theme
+          # files (javascripts/, stylesheets/, images/), which always stay.
+          EXCLUDE_ASSETS: "false"
         run: |
-          cd site
-          zip -r ../shastra-offline.zip .
+          rm -rf "$SITE_DIR" && cp -r site "$SITE_DIR"
+          if [ "$EXCLUDE_ASSETS" = "true" ] && [ -d contents/assets ]; then
+            (cd contents/assets && find . -type f) | while read -r f; do
+              rm -f "$SITE_DIR/assets/$f"
+            done
+            find "$SITE_DIR/assets" -type d -empty -delete
+          fi
+          zip -rq "$SITE_DIR-offline.zip" "$SITE_DIR"
 
       - name: Upload offline zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: shastra-offline
-          path: shastra-offline.zip
+          name: darshana-offline
+          path: darshana-offline.zip
           retention-days: 90
 
   deploy:
