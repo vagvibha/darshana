@@ -173,6 +173,12 @@ types:
     hideable: true
     hidden_by_default: false
 
+  - data_type: bhashyam
+    css_style: basic_gloss
+    label: "शाङ्करभाष्यम्"
+    hideable: true
+    hidden_by_default: false
+
   - data_type: vyakarana
     css_style: basic_gloss
     label: "व्याकरणम्"
