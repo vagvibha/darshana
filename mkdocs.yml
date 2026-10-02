@@ -4,12 +4,11 @@
 # `nav:` list itself each time it runs.
 
 nav:
-- मुखपृष्ठम्: index.md
 
 hooks:
   - scripts/mkdocs_hooks.py
 
-site_name: शास्त्रम्
+site_name: वेदान्तर्शनम्
 docs_dir: docs
 
 theme:
