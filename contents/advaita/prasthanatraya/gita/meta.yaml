@@ -2,4 +2,21 @@ title: श्रीमद्भगवद्गीता
 author: भगवान् वेदव्यासः
 default_shloka_type: karika
 order: 1
-ignore: true
+#ignore: true
+gloss_types:
+  - data_type: bhashya
+    css_style: fine_print
+    label: "भाष्यम्"
+    hideable: true
+    hidden_by_default: false
+  - data_type: bhashya_nolabel
+    css_style: fine_print
+    hideable: true
+    hidden_by_default: false
+  - data_type: anandagiritika
+    label: "आनन्दगिरिटीका"
+    exclude_site: true
+    css_style: fine_print
+    hideable: true
+    boxed: closed
+    hidden_by_default: true
