@@ -2,7 +2,8 @@ title: लघुवासुदेवमननम्
 chapters: वर्णकानि
 author: वासुदेवेन्द्रः
 default_class: vritti
-source: "ocr"
+shloka_toc: false
+source: ["ocr"]
 dict:
    folder: advaita
 gloss_types:
