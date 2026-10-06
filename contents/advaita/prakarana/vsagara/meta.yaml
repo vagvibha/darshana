@@ -1,0 +1,30 @@
+title: विचारसागरः
+chapters: तरङ्गाः
+author: साधुश्रीनिश्चलदासः (श्रीवासुदेवब्रह्मेन्द्रसरस्वती)
+default_class: mula
+shloka_toc: false
+source: ["aupasana.com"]
+dict:
+   folder: advaita
+gloss_types:
+  - data_type: mula
+    css_style: flowing_text
+    hideable: false
+    hidden_by_default: false
+  - data_type: tippani
+    css_style: fine_print
+    label: "टिप्पणी" #use only if boxed
+    boxed: closed
+    hideable: false
+    hidden_by_default: false
+  - data_type: notes
+    css_style: fine_print
+    label: "विचारलहरी" # use only for boxed (स्मरणिका/संलेखः/लेखिका/मनोगतम्)
+    boxed: closed
+    hideable: true
+    hidden_by_default: true
+header: |
+   **सुखं नित्यं स्वप्रकाशं व्यापकं नामरूपयोः।<br>
+   अधिष्ठानं बुद्ध्यबोध्यं बुद्धेर्दृग्यत्तु निर्मलम् ॥१॥<br>
+   अपारं सर्ववेदान्तवेद्यं प्रत्यक् परं महः।<br>
+   तदेवाहं न मत्तोऽन्यदिति मे निश्चिता मतिः ॥२॥**

@@ -1,0 +1,42 @@
+title: "प्रथमस्तरङ्गः"
+chapter_display_style: sections
+toc:
+   - title: "वस्तुनिर्देशरूपमङ्गलाचरणम्"
+     children:
+       - file: vs-1-001.md
+       - file: vs-1-002.md
+       - file: vs-1-003.md
+       - title: "स्वप्रत्यगात्मविषयकमङ्गलाचरणविषये आक्षेपसमाधानानि"
+         children:
+            - file: vs-1-004-005.md
+            - file: vs-1-006-007.md
+            - file: vs-1-008-009.md
+            - file: vs-1-010-011.md
+#       - file: vs-1-012.md
+#       - file: vs-1-013.md
+#       - file: vs-1-014.md
+#       - file: vs-1-015.md
+#       - file: vs-1-016.md
+#       - file: vs-1-017.md
+#       - file: vs-1-018.md
+#       - file: vs-1-019.md
+#       - file: vs-1-020.md
+#       - file: vs-1-021.md
+#       - file: vs-1-022.md
+#       - file: vs-1-023.md
+#       - file: vs-1-024.md
+#       - file: vs-1-025.md
+#       - file: vs-1-026.md
+#       - file: vs-1-027.md
+#       - file: vs-1-028.md
+#       - file: vs-1-029.md
+#       - file: vs-1-030.md
+#       - file: vs-1-031.md
+#       - file: vs-1-032.md
+#       - file: vs-1-033.md
+#       - file: vs-1-034.md
+#       - file: vs-1-035.md
+#       - file: vs-1-036.md
+#       - file: vs-1-037.md
+#       - file: vs-1-038.md
+#       - file: vs-1-039.md
