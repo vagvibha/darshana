@@ -6,11 +6,12 @@ shloka_toc: false
 source: ["ocr"]
 dict:
    folder: advaita
-gloss_types:
-  - data_type: notes
-    css_style: fine_print
-    hideable: true
-    hidden_by_default: false
+#gloss_types:
+#  - data_type: notes
+#    css_style: fine_print
+#    boxed: 
+#    hideable: true
+#    hidden_by_default: true
 header: |
    **सर्वतन्त्रस्वतन्त्राय सदात्माद्वैतवेदिने ।<br>
    श्रीमते शंकरार्याय वेदान्तगुरवे नमः ॥१॥<br>

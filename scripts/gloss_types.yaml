@@ -203,8 +203,10 @@ types:
 
   - data_type: notes
     css_style: fine_print
+    label: "विचारलहरी"
+    boxed: open
     hideable: true
-    hidden_by_default: false
+    hidden_by_default: true
 
   # --- vada — see the header comment above for why these use class:
   # vada instead of the default "gloss". Primary argumentative content,
