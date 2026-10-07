@@ -24,6 +24,7 @@ gloss_types:
     hideable: true
     hidden_by_default: true
 header: |
+   <small>source: https://github.com/aupasana/vichara</small><br><br>
    **सुखं नित्यं स्वप्रकाशं व्यापकं नामरूपयोः।<br>
    अधिष्ठानं बुद्ध्यबोध्यं बुद्धेर्दृग्यत्तु निर्मलम् ॥१॥<br>
    अपारं सर्ववेदान्तवेद्यं प्रत्यक् परं महः।<br>
