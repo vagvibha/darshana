@@ -81,7 +81,7 @@ maintain_shloka_linebreak: true
 # entry's label.
 topics:
   dir: "topics"
-  h1_label: "विषयाः"
+  h1_label: "विषयाः (रच्यमानाः ...)"
 
 dictionaries:
   - name: Advaita
