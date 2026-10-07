@@ -29,3 +29,5 @@ gloss_types:
     hideable: true
     boxed: closed
     hidden_by_default: true
+header: |
+    <small>source: mixed (typed, gitasupersite.in)</small>
