@@ -13,14 +13,14 @@ gloss_types:
     hidden_by_default: false
   - data_type: tippani
     css_style: fine_print
-    label: "टिप्पणी" #use only if boxed
-    boxed: closed
+    label: "ग्रन्थकारटिप्पणी" #use only if boxed
+    boxed: open
     hideable: false
     hidden_by_default: false
   - data_type: notes
     css_style: fine_print
     label: "विचारलहरी" # use only for boxed (स्मरणिका/संलेखः/लेखिका/मनोगतम्)
-    boxed: closed
+    boxed: open
     hideable: true
     hidden_by_default: true
 header: |

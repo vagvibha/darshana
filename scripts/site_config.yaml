@@ -42,7 +42,7 @@ theme:
   language: "sa"
 
 labels:
-  home_title: "शास्त्रम्"
+  home_title: "विमर्शसामग्री"
   # Every other UI string the generated site shows — a differently
   # labeled or non-Devanagari deployment only needs to edit this file.
   home_nav_label: "मुखपृष्ठम्"        # nav root entry (mkdocs.yml nav's first item)
