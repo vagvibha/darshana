@@ -512,3 +512,5 @@ body.sv-force-hide .md-typeset .sv-toggleable {
 }
 
 .md-typeset :not(pre) > code { font-size: inherit; }
+
+.md-typeset .sv-text-source { font-size: 0.8em; opacity: 0.75; }
