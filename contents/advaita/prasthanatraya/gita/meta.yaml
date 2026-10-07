@@ -18,6 +18,7 @@ gloss_types:
   - data_type: notes
     css_style: fine_print
     label: "स्मरणिका"
+    label_from_attr: label
     hideable: true
     boxed: closed
     hidden_by_default: true
