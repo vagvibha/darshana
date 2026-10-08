@@ -1,3 +1,46 @@
-ignore: true
-title: "मूलमात्रम्"
+title: "मूलम् (सुखोच्चारणम्)"
 chapter_display_style: sections
+shloka_toc: false
+shloka_highlight: false
+default_shloka_type: nataka
+#toc:
+#   - title: "मूलम् ("
+#     children:
+#         - file: bg01.md
+#         - file: bg02.md
+#         - file: bg03.md
+#         - file: bg04.md
+#         - file: bg05.md
+#         - file: bg06.md
+#         - file: bg07.md
+#         - file: bg08.md
+#         - file: bg09.md
+#         - file: bg10.md
+#         - file: bg11.md
+#         - file: bg12.md
+#         - file: bg13.md
+#         - file: bg14.md
+#         - file: bg15.md
+#         - file: bg16.md
+#         - file: bg17.md
+#         - file: bg18.md
+#   - title: "मूलम् (सुखोच्चारणम्)"
+#     children:
+#         - file: bgc01.md
+#         - file: bgc02.md
+#         - file: bgc03.md
+#         - file: bgc04.md
+#         - file: bgc05.md
+#         - file: bgc06.md
+#         - file: bgc07.md
+#         - file: bgc08.md
+#         - file: bgc09.md
+#         - file: bgc10.md
+#         - file: bgc11.md
+#         - file: bgc12.md
+#         - file: bgc13.md
+#         - file: bgc14.md
+#         - file: bgc15.md
+#         - file: bgc16.md
+#         - file: bgc17.md
+#         - file: bgc18.md
