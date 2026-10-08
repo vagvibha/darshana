@@ -31,19 +31,21 @@ toc:
             - file: vs-1-021.md
             - file: vs-1-022.md
             - file: vs-1-023.md
-#       - file: vs-1-024.md
-#       - file: vs-1-025.md
-#       - file: vs-1-026.md
-#       - file: vs-1-027.md
-#       - file: vs-1-028.md
-#       - file: vs-1-029.md
-#       - file: vs-1-030.md
-#       - file: vs-1-031.md
-#       - file: vs-1-032.md
-#       - file: vs-1-033.md
-#       - file: vs-1-034.md
-#       - file: vs-1-035.md
-#       - file: vs-1-036.md
-#       - file: vs-1-037.md
-#       - file: vs-1-038.md
-#       - file: vs-1-039.md
+       - title: "ज्ञाने मुख्यान्तरङ्गसाधनश्रवणादीनां लक्षणम्"
+         children:
+            - file: vs-1-024.md
+            - file: vs-1-025.md
+            - file: vs-1-026.md
+       - file: vs-1-027.md
+       - file: vs-1-028.md
+       - file: vs-1-029.md
+       - file: vs-1-030.md
+       - file: vs-1-031.md
+       - file: vs-1-032.md
+       - file: vs-1-033.md
+       - file: vs-1-034.md
+       - file: vs-1-035.md
+       - file: vs-1-036.md
+       - file: vs-1-037.md
+       - file: vs-1-038.md
+       - file: vs-1-039.md
