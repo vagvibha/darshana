@@ -11,6 +11,13 @@ gloss_types:
     label: "भाष्यम्"
     hideable: false
     hidden_by_default: false
+  - data_type: bhashya
+    css_style: flowing_text
+    exclude_site: true
+    label: "भाष्यम्"
+    hideable: false
+    hidden_by_default: false
+  - data_type: nolabel
   - data_type: nolabel
     css_style: flowing_text
     hideable: false
