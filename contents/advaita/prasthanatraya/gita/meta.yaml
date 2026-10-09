@@ -8,18 +8,19 @@ source: ["gitasupersite.in"]
 gloss_types:
   - data_type: bhashyapc
     css_style: flowing_text
+    exclude_site: true
     label: "भाष्यम्"
     hideable: false
     hidden_by_default: false
   - data_type: bhashya
     css_style: flowing_text
-    exclude_site: true
-    label: "भाष्यम्"
+    exclude_site: false
+    label: "शाङ्करभाष्यम्"
     hideable: false
     hidden_by_default: false
-  - data_type: nolabel
-  - data_type: nolabel
+  - data_type: intro # match fields to bhashya
     css_style: flowing_text
+    label: "शाङ्करभाष्यम् (अवतरणिका)"
     hideable: false
     hidden_by_default: false
   - data_type: notes
