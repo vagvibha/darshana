@@ -6,7 +6,7 @@ chapters: "अध्यायाः (सभाष्यम्)"
 shloka_highlight: true
 source: ["gitasupersite.in"]
 gloss_types:
-  - data_type: bhashya
+  - data_type: bhashyapc
     css_style: flowing_text
     label: "भाष्यम्"
     hideable: false
