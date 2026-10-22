@@ -1,7 +1,5 @@
 __pycache__/
 tmp/
+docs/
+mkdocs.yml
 .DS_Store
-docs/advaita/
-docs/index.md
-docs/itarashastra/
-docs/topics/
