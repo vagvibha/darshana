@@ -1,5 +1,8 @@
 title: "प्रथमस्तरङ्गः"
 chapter_display_style: sections
+dict:
+   title: "[प्रथमस्तरङ्गः]"
+   type: notes
 toc:
    - title: "वस्तुनिर्देशरूपमङ्गलाचरणम्"
      children:
