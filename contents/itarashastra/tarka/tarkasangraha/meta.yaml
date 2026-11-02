@@ -3,3 +3,23 @@ author: अन्नंभट्टः
 default_shloka_type: sutra
 ignore: true
 order: 1
+source: ["दीपिका, न्यायबोधिनी, पदकृत्यम्: तर्कसङ्ग्रहः, सं. श्रीगोविन्दाचार्यः (चौखम्बा सुरभारती प्रकाशन, वाराणसी; ग्रन्थमाला ४९८)"]
+gloss_types:
+  - data_type: dipika
+    css_style: basic_gloss
+    label: "दीपिका"
+    hideable: true
+    boxed: closed
+    hidden_by_default: false
+  - data_type: nyayabodhini
+    css_style: basic_gloss
+    label: "न्यायबोधिनी"
+    hideable: true
+    boxed: closed
+    hidden_by_default: false
+  - data_type: padakrtya
+    css_style: basic_gloss
+    label: "पदकृत्यम्"
+    hideable: true
+    boxed: closed
+    hidden_by_default: false
