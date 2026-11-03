@@ -105,13 +105,13 @@ content_sections:
         h2_label: "सिद्धिग्रन्थाः"
 
   # --- Card 2: other shastras --------------------------------------------
-  - dir: "itarashastra"
-    h1_label: "इतरशास्त्राणि"
-    default_chapter_word: "अध्यायः"
-    text_groups:
-      - dir: "vyakarana"
-        h2_label: "व्याकरणम्"
-      - dir: "tarka"
-        h2_label: "तर्कः"
-      - dir: "yoga"
-        h2_label: "योगः"
+#  - dir: "itarashastra"
+#    h1_label: "इतरशास्त्राणि"
+#    default_chapter_word: "अध्यायः"
+#    text_groups:
+#      - dir: "vyakarana"
+#        h2_label: "व्याकरणम्"
+#      - dir: "tarka"
+#        h2_label: "तर्कः"
+#      - dir: "yoga"
+#        h2_label: "योगः"

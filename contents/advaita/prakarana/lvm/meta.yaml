@@ -1,9 +1,9 @@
 title: लघुवासुदेवमननम्
+order: 98
 chapters: वर्णकानि
 author: वासुदेवेन्द्रः
 default_class: vritti
 shloka_toc: false
-source: ["ocr"]
 dict:
    folder: advaita
 #gloss_types:
@@ -13,7 +13,6 @@ dict:
 #    hideable: true
 #    hidden_by_default: true
 header: |
-   <small>source: typed, ocr</small><br><br>
    **सर्वतन्त्रस्वतन्त्राय सदात्माद्वैतवेदिने ।<br>
    श्रीमते शंकरार्याय वेदान्तगुरवे नमः ॥१॥<br>
    योऽवतीर्ण इहाचार्यरूपेण यतिनां मुदे ।<br>
