@@ -1,2 +1,4 @@
-ignore: true
 title: "दक्षिणामूर्तिस्तोत्रम्"
+order: 10
+skip_text_index: true
+shloka_toc: false

@@ -1,0 +1,23 @@
+title: "अध्यारोपः, ईश्वरः, प्रत्यगात्मा, अज्ञानम्, अनात्मा"
+chapter_display_style: sections
+toc:
+   - file: s-05-01.md
+   - file: s-05-02.md
+   - file: s-05-03.md
+   - file: s-05-04.md
+   - file: s-05-05.md
+   - file: s-05-06.md
+     children:
+       - file: s-05-07.md
+       - file: s-05-08.md
+       - file: s-05-09.md
+       - file: s-05-10.md
+       - file: s-05-11.md
+   - file: s-05-12.md
+     children:
+       - file: s-05-13.md
+       - file: s-05-14.md
+       - file: s-05-15.md
+       - file: s-05-16.md
+
+

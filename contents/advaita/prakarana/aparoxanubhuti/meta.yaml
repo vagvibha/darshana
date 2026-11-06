@@ -1,2 +1,4 @@
-ignore: true
 title: "अपरोक्षानुभूतिः"
+order: 10
+skip_text_index: true
+shloka_toc: false

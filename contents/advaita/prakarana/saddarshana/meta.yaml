@@ -1,2 +1,4 @@
-ignore: true
 title: "सद्दर्शनम्"
+order: 11
+skip_text_index: true
+shloka_toc: false

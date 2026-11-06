@@ -99,19 +99,19 @@ content_sections:
     text_groups:
       - dir: "prakarana"
         h2_label: "प्रकरणग्रन्थाः"
+      - dir: "stotra"
+        h2_label: "स्तोत्राणि"
       - dir: "prasthanatraya"
         h2_label: "प्रस्थानत्रयी"
       - dir: "siddhigrantha"
         h2_label: "सिद्धिग्रन्थाः"
 
   # --- Card 2: other shastras --------------------------------------------
-#  - dir: "itarashastra"
-#    h1_label: "इतरशास्त्राणि"
-#    default_chapter_word: "अध्यायः"
-#    text_groups:
-#      - dir: "vyakarana"
-#        h2_label: "व्याकरणम्"
-#      - dir: "tarka"
-#        h2_label: "तर्कः"
+  - dir: "itarashastra"
+    h1_label: "इतरशास्त्राणि"
+    default_chapter_word: "अध्यायः"
+    text_groups:
+      - dir: "tarka"
+        h2_label: "तर्कशास्त्रम्"
 #      - dir: "yoga"
 #        h2_label: "योगः"

@@ -1,2 +1,4 @@
-ignore: true
 title: "दृग्दृश्यविवेकः"
+order: 8
+skip_text_index: true
+shloka_toc: false

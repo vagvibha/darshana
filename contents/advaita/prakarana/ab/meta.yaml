@@ -1,2 +1,4 @@
-ignore: true
 title: "आत्मबोधः"
+order: 7
+skip_text_index: true
+shloka_toc: false

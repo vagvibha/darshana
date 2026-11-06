@@ -1,2 +1,4 @@
-ignore: true
 title: "उपदेशसारः"
+order: 4
+skip_text_index: true
+shloka_toc: false

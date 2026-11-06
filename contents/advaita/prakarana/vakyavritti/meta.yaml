@@ -1,2 +1,4 @@
-ignore: true
 title: "वाक्यवृत्तिः"
+order: 13
+skip_text_index: true
+shloka_toc: false

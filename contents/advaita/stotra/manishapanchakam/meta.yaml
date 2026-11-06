@@ -1,2 +1,4 @@
-ignore: true
 title: "मनीषापञ्चकम्"
+order: 2
+skip_text_index: true
+shloka_toc: false

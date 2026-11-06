@@ -1,2 +1,4 @@
-ignore: true
 title: "योगवासिष्ठसारः"
+order: 11
+skip_text_index: true
+shloka_toc: false
