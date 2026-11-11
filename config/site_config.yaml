@@ -29,7 +29,7 @@ site_name: "वेदान्तर्शनम्"
 # Google Analytics 4 property ID (e.g. "G-XXXXXXXXXX") — wired into
 # mkdocs.yml's extra.analytics block (Material's built-in GA4 support).
 # Leave blank/omit to build with no analytics at all.
-google_analytics_property: ""
+google_analytics_property: "G-86P5515DPZ"
 
 theme:
   primary: "deep orange"
