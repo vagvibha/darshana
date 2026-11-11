@@ -1,2 +1,9 @@
 title: "तृतीयोऽध्यायः"
 #chapter_display_style: sections
+dict:
+  type: shloka
+  title: "[अध्यायः-३]"
+  shloka_key_prefix: "BG,99,99"
+  chapter_key: BG-03
+  nav: true
+  tags_keep: []     # verse + keys only; add gloss types (e.g. a short tika) to show them

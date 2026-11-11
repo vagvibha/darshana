@@ -1,3 +1,8 @@
-ignore: true
-title: "मूलमात्रम्"
-chapter_display_style: sections
+title: "अष्टादशोऽध्यायः"
+dict:
+  type: shloka
+  title: "[अध्यायः-१८]"
+  shloka_key_prefix: "BG,99,99"
+  chapter_key: BG-18
+  nav: true
+  tags_keep: []     # verse + keys only; add gloss types (e.g. a short tika) to show them

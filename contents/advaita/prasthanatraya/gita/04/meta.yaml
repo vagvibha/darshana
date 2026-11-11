@@ -4,3 +4,10 @@ chapter_display_style: sections
 #   - file: bg4-01.md
 #   - file: bg4-02.md
 #   - file: bg4-03.md
+dict:
+  type: shloka
+  title: "[अध्यायः-४]"
+  shloka_key_prefix: "BG,99,99"
+  chapter_key: BG-04
+  nav: true
+  tags_keep: []     # verse + keys only; add gloss types (e.g. a short tika) to show them

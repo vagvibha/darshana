@@ -1,1 +1,8 @@
 title: द्वितीयोऽध्यायः
+dict:
+  type: shloka
+  title: "[अध्यायः-२]"
+  shloka_key_prefix: "BG,99,99"
+  chapter_key: BG-02
+  nav: true
+  tags_keep: []     # verse + keys only; add gloss types (e.g. a short tika) to show them
