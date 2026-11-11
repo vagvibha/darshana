@@ -1,2 +1,15 @@
 title: "आत्मस्वरूपम्"
+chapter_display_style: "sections"
+toc:
+   - file: s-09-01.md
+   - file: s-09-02.md
+   - file: s-09-03.md
+     children:
+        - file: s-09-04.md
+   - file: s-09-05.md
+     children:
+        - file: s-09-06.md
+        - file: s-09-07.md
+        - file: s-09-08.md
+        - file: s-09-09.md
 
