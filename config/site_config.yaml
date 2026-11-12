@@ -97,8 +97,10 @@ content_sections:
     h1_label: "अद्वैतवेदान्तः"
     default_chapter_word: "अध्यायः"
     text_groups:
-      - dir: "prakarana"
-        h2_label: "प्रकरणग्रन्थाः"
+      - dir: "pravesha"
+        h2_label: "प्राथमिकप्रकरणग्रन्थाः"
+      - dir: "praudha"
+        h2_label: "प्रौढप्रकरणग्रन्थाः"
       - dir: "stotra"
         h2_label: "स्तोत्राणि"
       - dir: "prasthanatraya"
