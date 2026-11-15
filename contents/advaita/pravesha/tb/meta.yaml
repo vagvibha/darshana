@@ -1,6 +1,7 @@
 title: "तत्त्वबोधः"
 chapters: "विषयाः"
 order: 1
+skip_text_index: true
 shloka_toc: false
 header: |
         **वासुदेवेन्द्रयोगीन्द्रं नत्वा ज्ञानप्रदं गुरुम् ।<br>
