@@ -80,7 +80,7 @@ dict:
     # अन्यत्र कुञ्जीरूपेण प्रयुक्ताः
     पुरा, मा, यत्, अहम्,
     # पूर्वसूचीतः (gita.txt HEADER:skip)
-    चैव, अर्थ, गत,
+    अर्थ, गत,
   ]
 header: |
     <small>source: mixed (typed, gitasupersite.in)</small>
