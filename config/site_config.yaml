@@ -7,7 +7,7 @@ theme:
   language: "sa"
 
 labels:
-  home_title: "स्वाध्यायसामग्री"
+  home_title: "विमर्शसामग्रीसङ्ग्रहः"
   home_nav_label: "मुखपृष्ठम्"        # nav root entry (mkdocs.yml nav's first item)
   home_button_label: "मुखपृष्ठम्"     # the Home button in every page's own top navbar
   intro_nav_label: "परिचयः"           # per-text "introduction" TOC nav label
