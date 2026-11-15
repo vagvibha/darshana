@@ -1,4 +1,4 @@
-<div class="shloka" highlight="true">
+<div class="shloka" highlight>
 नत्वा लक्ष्मीहयग्रीवचरणाम्भोरुहद्वयम् ।
 वेदान्तसङ्ग्रहोऽस्माभिः क्रियते बालबुद्धये ॥
 </div>
