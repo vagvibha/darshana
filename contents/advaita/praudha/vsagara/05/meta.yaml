@@ -1,3 +1,138 @@
+title: "पञ्चमस्तरङ्गः"
 chapter_display_style: sections
-ignore: true
-
+toc:
+  - file: vs-226.md
+  - title: "श्रीसद्गुरोरुत्तरम्"
+    children:
+      - title: "शाङ्करमतस्याद्वैतस्य प्रमाणिकत्ववर्णनम्"
+        children:
+          - file: vs-227.md
+          - file: vs-228.md
+          - file: vs-229.md
+      - title: "दृष्टान्तत्वेन राजामात्यभर्च्छुकथाप्रस्तावः"
+        children:
+          - file: vs-230.md
+          - file: vs-231.md
+          - title: "भर्च्छोर्वैराग्यवर्णनम्"
+            children:
+              - file: vs-232.md
+              - file: vs-233.md
+              - title: "स्त्रीसङ्गजदुःखवर्णनम्"
+                children:
+                  - file: vs-234.md
+                  - file: vs-235.md
+                  - file: vs-236.md
+                  - file: vs-237.md
+              - file: vs-238.md
+              - file: vs-239.md
+          - file: vs-240.md
+      - file: vs-241.md
+      - file: vs-242.md
+      - file: vs-243.md
+      - file: vs-244.md
+      - file: vs-245.md
+      - file: vs-246.md
+      - file: vs-247.md
+      - file: vs-248.md
+      - file: vs-249.md
+  - file: vs-250.md
+  - file: vs-251.md
+  - title: "संसारविषयकविचारः"
+    children:
+      - file: vs-252.md
+      - title: "पूर्वप्रश्नस्य गुरोरुत्तरम्"
+        children:
+          - file: vs-253.md
+          - file: vs-254.md
+          - title: "श्रुत्युक्तोत्पत्तिक्रमनिरूपणम्"
+            children:
+              - title: "प्रसङ्गान्मायास्वरूपप्रतिपादनम्"
+                children:
+                  - file: vs-255.md
+                  - file: vs-256.md
+                  - file: vs-257.md
+                  - file: vs-258.md
+                  - file: vs-259.md
+                  - file: vs-260.md
+              - title: "प्रसङ्गादीश्वरस्वरूपवर्णनम्"
+                children:
+                  - file: vs-261.md
+                  - file: vs-262.md
+              - file: vs-263.md
+              - title: "जगत्सृष्टिवर्णनम्"
+                children:
+                  - file: vs-264.md
+                  - file: vs-265.md
+                  - title: "सूक्ष्मसृष्टिनिरूपणम्"
+                    children:
+                      - file: vs-266.md
+                      - file: vs-267.md
+                      - file: vs-268.md
+                      - file: vs-269.md
+                      - file: vs-270.md
+                  - title: "स्थूलसृष्टिः"
+                    children:
+                      - file: vs-271.md
+                      - file: vs-272.md
+          - title: "आत्मविवेकः अथवा पञ्चकोशविवेकः"
+            children:
+              - file: vs-273.md
+              - file: vs-274.md
+              - file: vs-275.md
+              - file: vs-276.md
+              - file: vs-277.md
+              - file: vs-278.md
+              - title: "आनन्दमयकोश एवात्मेति मतम्"
+                children:
+                  - file: vs-279.md
+                  - file: vs-280.md
+                  - file: vs-281.md
+                  - file: vs-282.md
+              - file: vs-283.md
+  - title: "महावाक्यार्थोपदेशनिरूपणम्"
+    children:
+      - file: vs-284.md
+      - file: vs-285.md
+      - title: "पूर्वोक्तप्रश्नश्योत्तरम्"
+        children:
+          - file: vs-286.md
+          - file: vs-287.md
+          - file: vs-288.md
+          - file: vs-289.md
+          - title: "लयचिन्तनक्रमः"
+            children:
+              - file: vs-290.md
+              - file: vs-291.md
+              - file: vs-292.md
+          - file: vs-293.md
+          - title: "प्रणवोपासननिरूपणम्"
+            children:
+              - file: vs-294.md
+              - file: vs-295.md
+              - title: "निर्गुणप्रणवोपासनक्रमः"
+                children:
+                  - file: vs-296.md
+                  - file: vs-297.md
+                  - title: "ब्रह्मस्वरूपस्योङ्कारस्यात्मनश्चाभेदः"
+                    children:
+                      - file: vs-298.md
+                      - file: vs-299.md
+                      - file: vs-300.md
+                      - file: vs-301.md
+                      - file: vs-302.md
+                      - file: vs-303.md
+                      - file: vs-304.md
+                      - file: vs-305.md
+                  - file: vs-306.md
+                  - file: vs-307.md
+                  - title: "ओङ्कारध्यानफलम्"
+                    children:
+                      - file: vs-308.md
+                      - file: vs-309.md
+                  - file: vs-310.md
+                  - file: vs-311.md
+                  - file: vs-312.md
+                  - file: vs-313.md
+                  - file: vs-314.md
+                  - file: vs-315.md
+          - file: vs-316.md

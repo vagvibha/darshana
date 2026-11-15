@@ -1,3 +1,256 @@
+title: "षष्ठस्तरङ्गः"
 chapter_display_style: sections
-ignore: true
-
+toc:
+  - file: vs-317.md
+  - title: "कनिष्ठाधिकारिणस्तर्कदृष्टेः प्रश्नः"
+    children:
+      - file: vs-318.md
+      - file: vs-319.md
+  - title: "पूर्वोक्तप्रश्नस्योत्तरम्"
+    children:
+      - file: vs-320.md
+      - file: vs-321.md
+  - title: "जाग्रत्स्वप्नयोस्तुल्यता इति सिद्धान्तनिरूपणम्"
+    children:
+      - file: vs-322.md
+      - title: "स्वाप्नपदार्थस्याधिष्ठानोपादानयोः प्रदर्शनपूर्वकमुत्पत्तिवर्णनम्"
+        children:
+          - file: vs-323.md
+          - file: vs-324.md
+      - title: "त्रिविधसत्तापक्षे विलक्षणयोर्जाग्रत्स्वप्नयोः सत्ताभेदः, वस्तुतस्तयोरवैलक्षण्यात् सत्तैक्यमेव"
+        children:
+          - title: "तत्र शङ्का"
+            children:
+              - file: vs-325.md
+              - file: vs-326.md
+          - title: "पूर्वोक्तशङ्कयोः समाधानम्"
+            children:
+              - file: vs-327.md
+              - file: vs-328.md
+          - title: "प्रमाणग्रन्थेषु सत्तात्रैविध्यमुक्तमित्याक्षेपः"
+            children:
+              - file: vs-329.md
+              - file: vs-330.md
+          - file: vs-331.md
+      - title: "ब्रह्मनिष्ठकारणताया देशकालयोरङ्गीकारे अन्यथाख्यात्यापत्तिः स्यादित्याक्षेपः"
+        children:
+          - file: vs-332.md
+          - file: vs-333.md
+          - file: vs-334.md
+      - file: vs-335.md
+      - title: "जाग्रति पदार्थाः ज्ञानसमकालमेवोत्पद्यन्ते। अज्ञातसत्ताभावाद् द्वितीयजागरणपर्यन्तं नानुवर्तन्ते। जाग्रत्स्वप्नपदार्था अस्थिराः"
+        children:
+          - file: vs-336.md
+          - file: vs-337.md
+      - title: "जाग्रत्पदार्थानां मिथः कार्यकारणता नास्तीति प्रतिपादनम्"
+        children:
+          - file: vs-338.md
+          - file: vs-339.md
+          - file: vs-340.md
+      - file: vs-341.md
+  - title: "गुरुवेदान्तादीनां मिथ्यात्वे दृष्टान्तप्रदर्शनम्"
+    children:
+      - file: vs-342.md
+      - title: "अगृधदेवस्य (इच्छारहितात्मदेवस्य) स्वप्नव्याख्यानव्याजेन तत्त्वदृष्टिं प्रति गुरोरुत्तरम्"
+        children:
+          - title: "गतप्रश्नस्योत्तरम्"
+            children:
+              - file: vs-343.md
+              - title: "अगृधदेवस्य स्वप्नः"
+                children:
+                  - file: vs-344.md
+                  - file: vs-345.md
+                  - title: "मिथ्याचार्येण मिथ्याशिष्याय मिथ्यासंस्कृतग्रन्थेनोपदेशः"
+                    children:
+                      - title: "ग्रन्थारम्भ मङ्गलाचरणम्"
+                        children:
+                          - file: vs-346.md
+                          - file: vs-347.md
+                          - file: vs-348.md
+                      - title: "वेदान्तशास्त्रप्रणेतुराचार्यस्य (श्रीवेदव्यासस्य) नमस्कारः"
+                        children:
+                          - file: vs-349.md
+                          - file: vs-350.md
+                          - file: vs-351.md
+                      - file: vs-352.md
+          - title: "अहं कः? इति प्रश्नस्योत्तरम्"
+            children:
+              - file: vs-353.md
+              - file: vs-354.md
+              - file: vs-355.md
+              - title: "त्रिविधनैयायिकमतवर्णनं, तन्निराकरणं च"
+                children:
+                  - title: "आत्मा व्यापक इति मतवर्णनं तत्खण्डनं च"
+                    children:
+                      - title: "आत्मनो व्यापकत्वोपपादनम्"
+                        children:
+                          - file: vs-356.md
+                          - file: vs-357.md
+                          - file: vs-358.md
+                      - file: vs-359.md
+                      - file: vs-360.md
+                  - title: "आत्मनो मध्यमपरिमाणत्ववादिमतनिराकरणम्"
+                    children:
+                      - file: vs-361.md
+                      - file: vs-362.md
+                  - file: vs-363.md
+                  - file: vs-364.md
+              - title: "सिद्धान्तप्रदर्शनम्"
+                children:
+                  - file: vs-365.md
+                  - file: vs-366.md
+              - file: vs-367.md
+              - file: vs-368.md
+              - title: "आत्मनश्चिद्रूपवर्णनम्"
+                children:
+                  - file: vs-369.md
+                  - file: vs-370.md
+                  - file: vs-371.md
+                  - file: vs-372.md
+              - title: "आत्मा आनन्दस्वरूपः"
+                children:
+                  - file: vs-373.md
+                  - file: vs-374.md
+                  - file: vs-375.md
+                  - file: vs-376.md
+              - title: "सच्चिदानन्दाः परस्परं न भिना इति निरूपणम्"
+                children:
+                  - file: vs-377.md
+                  - file: vs-378.md
+              - title: "ब्रह्मरूपस्यात्मनो जन्मरहितत्त्वप्रतिपादनम्"
+                children:
+                  - file: vs-379.md
+                  - file: vs-380.md
+                  - file: vs-381.md
+              - file: vs-382.md
+          - title: "अस्य संसारस्य कर्ता कः? इति द्वितीयप्रश्नस्योत्तरम्"
+            children:
+              - file: vs-383.md
+              - title: "ईश्वरः सर्वज्ञः सर्वशक्तिमान् स्वतन्त्रश्चेति वर्णनम्"
+                children:
+                  - file: vs-384.md
+                  - file: vs-385.md
+              - file: vs-386.md
+              - file: vs-387.md
+          - title: "मोक्षस्य कारणं किम्? इति तृतीयप्रश्नस्योत्तरम्"
+            children:
+              - file: vs-388.md
+              - title: "कर्मोपासनयोर्मोक्षसाधनत्वाभावः"
+                children:
+                  - file: vs-389.md
+                  - file: vs-390.md
+                  - file: vs-391.md
+                  - file: vs-392.md
+              - title: "कर्मोपासने ज्ञानस्य मोक्षस्य च साधने इति वादिनामक्षेपाः"
+                children:
+                  - file: vs-393.md
+                  - file: vs-394.md
+                  - file: vs-395.md
+                  - file: vs-396.md
+              - title: "कर्मोपासनयोर्ज्ञानेन सह विरोध इति पूर्वोक्ताक्षेपाणां समाधानम्"
+                children:
+                  - file: vs-397.md
+                  - file: vs-398.md
+                  - file: vs-399.md
+              - file: vs-400.md
+              - file: vs-401.md
+              - file: vs-402.md
+              - file: vs-403.md
+              - file: vs-404.md
+              - title: "ज्ञानिनः पापचाञ्चल्ययोरभावात् तस्य कर्मोपासने अनुपयुक्ते"
+                children:
+                  - file: vs-405.md
+                  - file: vs-406.md
+              - file: vs-407.md
+              - title: "दृढज्ञानिनामदृढज्ञानिनामुत्तमजिज्ञासूनां च कर्मोपासनयोरनधिकारः"
+                children:
+                  - file: vs-408.md
+                  - file: vs-409.md
+              - title: "कर्मोपासने दृढबोधस्य न विरोधिनी किन्तु मन्दबोधस्यैव"
+                children:
+                  - file: vs-410.md
+                  - file: vs-411.md
+                  - file: vs-412.md
+              - file: vs-413.md
+              - title: "उपदिष्टार्थसङ्ग्रहः"
+                children:
+                  - file: vs-414.md
+                  - title: "ज्ञानसाधनवर्णनम्"
+                    children:
+                      - file: vs-415.md
+                      - file: vs-416.md
+                  - file: vs-417.md
+              - title: "मोक्षस्य साधनं ज्ञानमिति प्रकारान्तरेण वर्णनम्"
+                children:
+                  - file: vs-418.md
+                  - file: vs-419.md
+          - title: "महावाक्यार्थज्ञानम्"
+            children:
+              - title: "लक्षणानिरूपणम्"
+                children:
+                  - file: vs-420.md
+                  - file: vs-421.md
+                  - file: vs-422.md
+                  - title: "शक्तिलक्षणम्"
+                    children:
+                      - file: vs-423.md
+                      - file: vs-424.md
+                      - title: "शक्तिविषये मतान्तरखण्डनम्"
+                        children:
+                          - file: vs-425.md
+                          - file: vs-426.md
+                          - title: "वैयाकरणाभिमतशक्तिखण्डनम्"
+                            children:
+                              - file: vs-427.md
+                              - file: vs-428.md
+                      - title: "भट्टमतेन शक्तिलक्षणम्"
+                        children:
+                          - file: vs-429.md
+                          - file: vs-430.md
+                          - file: vs-431.md
+                      - title: "भट्टमतखण्डनम्"
+                        children:
+                          - title: "वाच्यवाचकयोर्भेदाभेदरूपतादात्म्यसमङ्गमिति निरूपणम्"
+                            children:
+                              - file: vs-432.md
+                              - file: vs-433.md
+                              - file: vs-434.md
+                          - title: "उपादानकारणतत्कार्ययोर्भेदाभेदरूपतादात्म्यसंबन्धो दुर्घटः"
+                            children:
+                              - file: vs-435.md
+                              - file: vs-436.md
+                              - file: vs-437.md
+                      - file: vs-438.md
+                      - file: vs-439.md
+                  - title: "जहदजहद्भागत्यागलक्षणानां लक्षणम्"
+                    children:
+                      - file: vs-440.md
+                      - file: vs-441.md
+                      - file: vs-442.md
+              - title: "महावाक्येषु लक्षणा"
+                children:
+                  - file: vs-443.md
+                  - file: vs-444.md
+                  - file: vs-445.md
+                  - file: vs-446.md
+                  - file: vs-447.md
+                  - file: vs-448.md
+                  - file: vs-449.md
+              - file: vs-450.md
+              - file: vs-451.md
+              - file: vs-452.md
+              - file: vs-453.md
+              - file: vs-454.md
+              - file: vs-455.md
+              - title: "पूर्वोक्ताक्षेपसमाधिः। पदद्वयलक्षणा स्फलेति प्रदर्शनम्"
+                children:
+                  - file: vs-456.md
+                  - file: vs-457.md
+                  - file: vs-458.md
+                  - file: vs-459.md
+                  - file: vs-460.md
+              - file: vs-461.md
+              - title: "पूर्वोक्तप्रश्नस्योत्तरम्"
+                children:
+                  - file: vs-462.md
+                  - file: vs-463.md

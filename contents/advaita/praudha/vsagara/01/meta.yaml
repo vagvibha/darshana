@@ -6,53 +6,53 @@ dict:
 toc:
    - title: "वस्तुनिर्देशरूपमङ्गलाचरणम्"
      children:
-       - file: vs-1-001.md
-       - file: vs-1-002.md
-       - file: vs-1-003.md
+       - file: vs-001.md
+       - file: vs-002.md
+       - file: vs-003.md
        - title: "स्वप्रत्यगात्मविषयकमङ्गलाचरणविषये आक्षेपसमाधानानि"
          children:
-            - file: vs-1-004-005.md
-            - file: vs-1-006-007.md
-            - file: vs-1-008-009.md
-            - file: vs-1-010-011.md
+            - file: vs-004-005.md
+            - file: vs-006-007.md
+            - file: vs-008-009.md
+            - file: vs-010-011.md
    - title: "ग्रन्थमहिमा"
      children:
-       - file: vs-1-012.md
-       - file: vs-1-013.md
+       - file: vs-012.md
+       - file: vs-013.md
 
    - title: "साधनचतुष्टयनिरूपणम्"
      children:
-       - file: vs-1-014.md
+       - file: vs-014.md
        - title: "अधिकारिनिरूपणम्"
          children:
-            - file: vs-1-015.md
-            - file: vs-1-016.md
-            - file: vs-1-017.md
-            - file: vs-1-018.md
-            - file: vs-1-019.md
-            - file: vs-1-020.md
-            - file: vs-1-021.md
-            - file: vs-1-022.md
-            - file: vs-1-023.md
+            - file: vs-015.md
+            - file: vs-016.md
+            - file: vs-017.md
+            - file: vs-018.md
+            - file: vs-019.md
+            - file: vs-020.md
+            - file: vs-021.md
+            - file: vs-022.md
+            - file: vs-023.md
             - title: "ज्ञाने मुख्यान्तरङ्गसाधनश्रवणादीनां लक्षणम्"
               children:
-                  - file: vs-1-024.md
-                  - file: vs-1-025.md
-                  - file: vs-1-026.md
-            - file: vs-1-027.md
-            - file: vs-1-028.md
+                  - file: vs-024.md
+                  - file: vs-025.md
+                  - file: vs-026.md
+            - file: vs-027.md
+            - file: vs-028.md
             - title: "महावाक्यमपरोक्षज्ञानहेतुरित्यत्राक्षेपसमाधानानि"
               children:
-                  - file: vs-1-029.md
-                  - file: vs-1-030.md
-                  - file: vs-1-031.md
-       - file: vs-1-032.md
+                  - file: vs-029.md
+                  - file: vs-030.md
+                  - file: vs-031.md
+       - file: vs-032.md
        - title: "प्रयोजननिरूपणम्"
          children:
-            - file: vs-1-033.md
-            - file: vs-1-034.md
-            - file: vs-1-035.md
-            - file: vs-1-036.md
-            - file: vs-1-037.md
-            - file: vs-1-038.md
-       - file: vs-1-039.md
+            - file: vs-033.md
+            - file: vs-034.md
+            - file: vs-035.md
+            - file: vs-036.md
+            - file: vs-037.md
+            - file: vs-038.md
+       - file: vs-039.md

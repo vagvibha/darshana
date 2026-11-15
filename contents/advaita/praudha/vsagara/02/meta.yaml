@@ -1,4 +1,98 @@
 title: "द्वितीयस्तरङ्गः"
 chapter_display_style: sections
-ignore: true
-
+toc:
+  - title: "अधिकारिविषयकाक्षेपाः"
+    children:
+      - file: vs-040-41.md
+      - file: vs-042.md
+      - file: vs-043.md
+  - title: "अधिकारिविषयकाक्षेपाणां समाधानानि"
+    children:
+      - file: vs-044.md
+      - file: vs-045.md
+      - file: vs-046-047.md
+      - file: vs-048.md
+      - file: vs-049.md
+      - file: vs-050.md
+      - file: vs-051.md
+      - file: vs-052.md
+      - file: vs-053.md
+      - file: vs-054.md
+  - title: "विषये आक्षेपाः"
+    children:
+      - file: vs-055.md
+      - title: "साक्षिब्रह्मैक्यविषये आक्षेपः"
+        children:
+          - file: vs-056.md
+          - file: vs-057.md
+          - file: vs-058.md
+          - file: vs-059.md
+          - file: vs-060.md
+  - title: "विषयविषयकाक्षेपाणां समाधानि"
+    children:
+      - file: vs-061.md
+      - file: vs-062.md
+      - file: vs-063.md
+      - file: vs-064.md
+      - file: vs-065.md
+  - title: "प्रयोजनविषयकाक्षेपाः"
+    children:
+      - title: "न ज्ञानेन बन्धनिवृत्तिरित्याक्षेपः"
+        children:
+          - file: vs-066.md
+          - file: vs-067.md
+          - file: vs-068.md
+          - file: vs-069.md
+          - file: vs-070.md
+          - file: vs-071.md
+          - file: vs-072.md
+      - title: "कर्मणैव मोक्षः सिद्ध्यतीत्यैकभविकवादमवलम्ब्याक्षेपः"
+        children:
+          - file: vs-073.md
+          - file: vs-074.md
+          - file: vs-075.md
+          - title: "मुमुक्षुणा अनुष्ठेयकर्मणां निरूपणम्"
+            children:
+              - file: vs-076.md
+              - file: vs-077.md
+              - file: vs-078.md
+              - file: vs-079.md
+              - file: vs-080.md
+          - file: vs-081.md
+      - file: vs-082.md
+  - title: "प्रयोजनविषयकाक्षेपाणां समाधानानि"
+    children:
+      - title: "“बन्धः सत्यः, स च ज्ञानेन निवर्तेत” इत्याक्षेपस्य समाधानानि"
+        children:
+          - file: vs-083.md
+          - file: vs-084.md
+          - file: vs-085.md
+          - file: vs-086.md
+          - file: vs-087.md
+          - file: vs-088.md
+          - file: vs-089.md
+          - file: vs-090.md
+          - file: vs-091.md
+          - file: vs-092.md
+          - file: vs-093.md
+          - file: vs-094.md
+          - file: vs-095.md
+          - file: vs-096.md
+          - title: "कारणाध्यासनिरूपणम्"
+            children:
+              - file: vs-097.md
+              - file: vs-098.md
+      - title: "कर्मणा मोक्षो न सिद्ध्यति"
+        children:
+          - file: vs-099.md
+          - file: vs-100.md
+          - file: vs-101.md
+          - file: vs-102.md
+          - file: vs-103.md
+          - file: vs-104.md
+          - file: vs-105.md
+          - file: vs-106.md
+  - title: "संबन्धविषयकाक्षेपः समाधानं च"
+    children:
+      - file: vs-107.md
+      - file: vs-108.md

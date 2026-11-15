@@ -1,3 +1,171 @@
+title: "चतुर्थस्तरङ्गः"
 chapter_display_style: sections
-ignore: true
-
+toc:
+  - title: "शुभसंततेः राज्ञः, तत्त्वदृष्टिरिति, अदृष्टिरिति, तर्कदृष्टिरिति समाख्यातानां तत्पुत्राणां च कथा"
+    children:
+      - file: vs-122.md
+      - file: vs-123.md
+      - file: vs-124.md
+      - file: vs-125.md
+  - file: vs-126.md
+  - file: vs-127.md
+  - title: "ज्ञानोपदेशः"
+    children:
+      - file: vs-128.md
+      - title: "आक्षेपसमाधानानि"
+        children:
+          - title: "सुखविषयकाक्षेपसमाधानानि"
+            children:
+              - file: vs-129.md
+              - file: vs-130.md
+              - file: vs-131.md
+              - file: vs-132.md
+          - title: "दुःखविषयकप्रश्नप्रत्युक्तयः"
+            children:
+              - file: vs-133.md
+              - file: vs-134.md
+              - file: vs-135.md
+              - file: vs-136.md
+              - file: vs-137.md
+              - title: "शिष्यः स्वप्रश्नस्याशयं वर्णयति"
+                children:
+                  - file: vs-138.md
+                  - file: vs-139.md
+                  - file: vs-140.md
+                  - title: "अन्यथाख्यातिः"
+                    children:
+                      - file: vs-141.md
+                      - file: vs-142.md
+                  - file: vs-143.md
+              - title: "अख्यातिमतखण्डनम्"
+                children:
+                  - file: vs-144.md
+                  - file: vs-145.md
+              - title: "सिद्धान्तिनोऽनिर्वचनीयख्यातिनिरूपणम्"
+                children:
+                  - file: vs-146.md
+                  - file: vs-147.md
+                  - file: vs-148.md
+                  - file: vs-149.md
+              - title: "आक्षेपसमाधानानि"
+                children:
+                  - file: vs-150.md
+                  - file: vs-151.md
+                  - file: vs-152.md
+                  - title: "सर्पाभावात् सर्पज्ञानस्य कारणे लयरूपनिवृत्तिरिति समाधिः"
+                    children:
+                      - file: vs-153.md
+                      - file: vs-154.md
+                      - file: vs-155.md
+                  - file: vs-156.md
+                  - file: vs-157.md
+                  - file: vs-158.md
+                  - file: vs-159.md
+              - file: vs-160.md
+              - title: "पूर्वप्रश्नस्योत्तरम्"
+                children:
+                  - file: vs-161.md
+                  - file: vs-162.md
+              - file: vs-163.md
+              - file: vs-164.md
+              - file: vs-165.md
+              - file: vs-166.md
+              - title: "गुरोरुत्तरम्"
+                children:
+                  - file: vs-167.md
+                  - file: vs-168.md
+  - title: "पूर्वोपदिष्टविषये आक्षेपसमाधानानि"
+    children:
+      - title: "जीवब्रह्मणोरभेदनिरूपणम्"
+        children:
+          - title: "जीवब्रह्माभेदविषये तत्त्वदृष्टिप्रश्नः"
+            children:
+              - file: vs-169.md
+              - file: vs-170.md
+              - file: vs-171.md
+          - title: "स्वरूपभेदाज्जीवब्रह्मणोरैक्यासङ्गतिरिति शङ्कायाः समाधानम्"
+            children:
+              - file: vs-172.md
+              - title: "चतुर्विधाकाशवर्णनम्"
+                children:
+                  - file: vs-173.md
+                  - file: vs-174.md
+                  - file: vs-175.md
+                  - file: vs-176.md
+              - title: "चैतन्यस्य चातुर्विध्यवर्णनम्"
+                children:
+                  - file: vs-177.md
+                  - file: vs-178.md
+                  - title: "जीवस्वरूपवर्णनम्"
+                    children:
+                      - title: "बुद्धिप्रतिबिम्बितचैतन्यं जीवः"
+                        children:
+                          - file: vs-179.md
+                          - file: vs-180.md
+                          - file: vs-181.md
+                          - file: vs-182.md
+                      - file: vs-183.md
+                  - file: vs-184.md
+                  - file: vs-185.md
+          - title: "“द्वा सुपर्णा” इति श्रुत्या जीवब्रह्मभेदः अवगम्यत इति, अन्यथा कर्मोपासनाविधिवैयर्थ्यमिति च शङ्कायाः समाधानम्"
+            children:
+              - file: vs-186.md
+              - file: vs-187.md
+              - file: vs-188.md
+      - title: "“अहं ब्रह्म” इति ज्ञानं कस्येति विचारः"
+        children:
+          - file: vs-189.md
+          - title: "प्रागुक्तप्रश्नस्योत्तरम्"
+            children:
+              - title: "आभासस्य सप्तावस्थाः"
+                children:
+                  - file: vs-190.md
+                  - file: vs-191.md
+              - file: vs-192.md
+              - file: vs-193.md
+              - file: vs-194.md
+              - file: vs-195.md
+              - file: vs-196.md
+          - file: vs-197.md
+          - file: vs-198.md
+      - title: "कूटस्थाभासयोः “अहंवृत्तौ” भानं किं क्रमेणोत क्रमं विनेति विचारः"
+        children:
+          - file: vs-199.md
+          - title: "पूर्वप्रश्नस्योत्तरम्"
+            children:
+              - file: vs-200.md
+              - file: vs-201.md
+              - file: vs-202.md
+              - file: vs-203.md
+              - title: "प्रमाणप्रसङ्गात्प्रत्यक्षानुमानशब्दोपमानार्थापत्त्यनुपलब्धिप्रमाणानि निरूप्यन्ते"
+                children:
+                  - file: vs-204.md
+                  - file: vs-205.md
+                  - file: vs-206.md
+                  - file: vs-207.md
+                  - file: vs-208.md
+                  - file: vs-209.md
+              - file: vs-210.md
+              - file: vs-211.md
+              - file: vs-212.md
+              - file: vs-213.md
+              - title: "प्रमातृलक्षणम्"
+                children:
+                  - file: vs-214.md
+                  - file: vs-215.md
+                  - file: vs-216.md
+                  - file: vs-217.md
+              - file: vs-218.md
+      - title: "इन्द्रियसंबन्धं विना “अहं ब्रह्म” इति ज्ञानस्य कथं प्रत्यक्षतेति तत्त्वदृष्टिप्रश्नः"
+        children:
+          - file: vs-219.md
+          - title: "ब्रह्म न ज्ञानेन्द्रियाणां विषयः"
+            children:
+              - file: vs-220.md
+              - file: vs-221.md
+              - file: vs-222.md
+          - file: vs-223.md
+      - title: "पूर्वोक्तप्रश्नस्योत्तरम्"
+        children:
+          - file: vs-224.md
+          - file: vs-225.md

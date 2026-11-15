@@ -1,3 +1,88 @@
+title: "सप्तमस्तरङ्गः"
 chapter_display_style: sections
-ignore: true
-
+toc:
+  - file: vs-464.md
+  - title: "ज्ञानिनो व्यवहारनियमाक्षेपः"
+    children:
+      - file: vs-465.md
+      - file: vs-466.md
+      - file: vs-467.md
+  - file: vs-468.md
+  - title: "समाध्यष्टाङ्गनिरूपणम्"
+    children:
+      - file: vs-469.md
+      - file: vs-470.md
+      - file: vs-471.md
+      - file: vs-472.md
+      - file: vs-473.md
+      - file: vs-474.md
+      - file: vs-475.md
+  - file: vs-476.md
+  - file: vs-477.md
+  - file: vs-478.md
+  - file: vs-479.md
+  - file: vs-480.md
+  - file: vs-481.md
+  - file: vs-482.md
+  - file: vs-483.md
+  - file: vs-484.md
+  - file: vs-485.md
+  - file: vs-486.md
+  - title: "ज्ञानिनो व्यवहारोऽनियतः"
+    children:
+      - file: vs-487.md
+      - file: vs-488.md
+  - file: vs-489.md
+  - file: vs-490.md
+  - file: vs-491.md
+  - title: "तर्कदृष्टेर्निश्चयः"
+    children:
+      - file: vs-492.md
+      - file: vs-493.md
+      - file: vs-494.md
+      - file: vs-495.md
+      - file: vs-496.md
+      - file: vs-497.md
+      - file: vs-498.md
+      - file: vs-499.md
+      - file: vs-500.md
+      - file: vs-501.md
+      - file: vs-502.md
+  - file: vs-503.md
+  - file: vs-504.md
+  - file: vs-505.md
+  - file: vs-506.md
+  - file: vs-507.md
+  - file: vs-508.md
+  - title: "शुभसन्ततिराजप्रसङ्गः"
+    children:
+      - file: vs-509.md
+      - file: vs-510.md
+      - file: vs-511.md
+      - file: vs-512.md
+      - file: vs-513.md
+      - file: vs-514.md
+      - file: vs-515.md
+      - file: vs-516.md
+      - file: vs-517.md
+      - file: vs-518.md
+  - file: vs-519.md
+  - file: vs-520.md
+  - file: vs-521.md
+  - file: vs-522.md
+  - file: vs-523.md
+  - file: vs-524.md
+  - file: vs-525.md
+  - file: vs-526.md
+  - file: vs-527.md
+  - file: vs-528.md
+  - file: vs-529.md
+  - file: vs-530.md
+  - file: vs-531.md
+  - file: vs-532.md
+  - file: vs-533.md
+  - file: vs-534.md
+  - file: vs-535.md
+  - file: vs-536.md
+  - file: vs-537.md
+  - file: vs-538.md
