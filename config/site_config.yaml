@@ -29,6 +29,7 @@ maintain_shloka_linebreak: true
 topics:
   dir: "topics"
   h1_label: "विषयाः (रच्यमानाः ...)"
+  dict_folder: darshana
 
 dictionaries:
   - name: Advaita

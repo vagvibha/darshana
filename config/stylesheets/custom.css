@@ -464,6 +464,14 @@ body.sv-force-hide .md-typeset .sv-toggleable {
   vertical-align: middle;
 }
 
+/* long Navya-Nyāya compounds (npsv: 130+ akṣaras with no space) would set
+   the परिभाषा column's minimum width and push the मूलम् column out of the
+   scrolling table — let only that column (always second-to-last in a row,
+   with or without the rowspan'd term cell) break inside a word. */
+.md-typeset table:has(td.sv-topic-term) td:nth-last-child(2):not(.sv-topic-term) {
+  overflow-wrap: anywhere;
+}
+
 /* the small forward jump-link process_topic_tags() drops right after
    every <topic> occurrence, to that topic's own page (see
    generate_indices.py) — deliberately subtle: present without
