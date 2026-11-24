@@ -1,5 +1,4 @@
 title: श्रीमद्भगवद्गीता
-author: भगवान् वेदव्यासः
 order: 1
 #ignore: true
 chapters: "अध्यायाः (सभाष्यम्)"
@@ -82,5 +81,5 @@ dict:
     # पूर्वसूचीतः (gita.txt HEADER:skip)
     अर्थ, गत,
   ]
-header: |
-    <small>source: mixed (typed, gitasupersite.in)</small>
+#header: |
+#    <small>source: mixed (typed, gitasupersite.in)</small>
